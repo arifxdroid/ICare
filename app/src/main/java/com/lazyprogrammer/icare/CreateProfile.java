@@ -58,7 +58,7 @@ public class CreateProfile extends ActionBarActivity {
         });
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,typeList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_spinner,R.id.txtSpinner,typeList);
         spnType.setAdapter(adapter);
         spnType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
