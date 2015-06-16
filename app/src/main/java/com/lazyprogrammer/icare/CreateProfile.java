@@ -1,5 +1,6 @@
 package com.lazyprogrammer.icare;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -18,10 +20,15 @@ import android.widget.Spinner;
 
 
 public class CreateProfile extends ActionBarActivity {
-    EditText etBlood,etCurrentDate, etAge,etHeight,etWeight,etPhone,etEmail,etPatientCondition;
+
+
+    EditText etPatientName,etBlood,etCurrentDate, etAge,etHeight,etWeight,etPhone,etEmail,etPatientCondition;
     ImageView imageView;
     Spinner spnType;
-    String[] typeList={"My Own","Father","Mother","Brother","Sister","Grand Father","Grand Mother","Children","Other"};
+    Button btnSave;
+
+
+    private String[] typeList={"My Own","Father","Mother","Brother","Sister","Grand Father","Grand Mother","Children","Other"};
     private String profileType;
     private String gender;
     private Uri imgUri = Uri.parse("android.resource://com.lazyprogrammer.icare/drawable/pa.png");
@@ -30,11 +37,63 @@ public class CreateProfile extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_profile);
+
+
         setInitialize();
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
+
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent();
+                i.setType("image/*");
+                i.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(i, "Choose from Gallery"), 1);
+            }
+        });
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,typeList);
+        spnType.setAdapter(adapter);
+        spnType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+
+                profileType = typeList[pos];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String name = etPatientName.getText().toString();
+                String bloodGroup = etBlood.getText().toString();
+                String currentDate = etCurrentDate.getText().toString();
+                int age = Integer.parseInt(etAge.getText().toString());
+                double height = Double.parseDouble(etHeight.getText().toString());
+                double weight = Double.parseDouble(etWeight.getText().toString());
+                String phone = etPhone.getText().toString();
+                String email = etEmail.getText().toString();
+                String patientCondition = etPatientCondition.getText().toString();
+
+                Patient patient = new Patient(name , profileType , gender , bloodGroup , currentDate , age , height , weight , phone , email , patientCondition , imgUri);
+
+
+            }
+        });
+
     }
 
     public void onRadioButtonClick(View v){
@@ -57,6 +116,8 @@ public class CreateProfile extends ActionBarActivity {
     }
 
     public void setInitialize() {
+
+        etPatientName = (EditText)findViewById(R.id.etPatientName);
         etBlood= (EditText) findViewById(R.id.etBlood);
         etCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
         etAge= (EditText) findViewById(R.id.etAge);
@@ -67,33 +128,13 @@ public class CreateProfile extends ActionBarActivity {
         etPatientCondition= (EditText) findViewById(R.id.etPatientCondition);
         imageView= (ImageView) findViewById(R.id.imageView);
         spnType= (Spinner) findViewById(R.id.spnType);
+        btnSave = (Button)findViewById(R.id.btnSave);
 
     }
     public void getData() {
 
-        String bloodGroup=etBlood.getText().toString();
-        String currentDate=etCurrentDate.getText().toString();
-        String age=etAge.getText().toString();
-        String height=etHeight.getText().toString();
-        String weight=etWeight.getText().toString();
-        String phone=etPhone.getText().toString();
-        String email=etEmail.getText().toString();
-        String patientCondition=etPatientCondition.getText().toString();
-        profileType = null;
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,typeList);
-        spnType.setAdapter(adapter);
-        spnType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
 
-                profileType = typeList[pos];
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
 
 
@@ -104,6 +145,16 @@ public class CreateProfile extends ActionBarActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1) {
+                imgUri = data.getData();
+                imageView.setImageURI(data.getData());
+            }
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -18,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final int VERSION = 1;
 
     public static final String TABLE_NAME = "patientProfile";
-    public static final String PATIENT_ID = "_ID_patient";
+    public static final String ID_FIELD = "_ID";
     public static final String PATIENT_NAME_FIELD = "patient_name";
     public static final String PATIENT_PROFILE_TYPE = "patient_profile_type";
     public static final String PATIENT_GENDER = "patient_gender";
@@ -32,7 +32,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String PATIENT_CONDITION = "patient_condition";
     public static final String PATIENT_IMAGE = "patient_image";
 
-    public static final String PATIENT_TABLE_SQL = "CREATE TABLE "+TABLE_NAME+" ("+PATIENT_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+PATIENT_NAME_FIELD+" TEXT, "+PATIENT_PROFILE_TYPE+" TEXT, "+PATIENT_GENDER+" TEXT, "+PATIENT_BLOOD_GROUP+" TEXT, "+CURRENT_DATE+" TEXT, "+PATIENT_AGE+" INTEGER, "+ PATIENT_HEIGHT +" DOUBLE, "+PATIENT_WEIGHT+" DOUBLE, "+PATIENT_PHONE_NUMBER+" TEXT, "+PATIENT_EMAIL+" TEXT, "+PATIENT_CONDITION+" TEXT, "+PATIENT_IMAGE+" TEXT)";
+    public static final String PATIENT_TABLE_SQL = "CREATE TABLE "+TABLE_NAME+" ("+ID_FIELD+" INTEGER PRIMARY KEY AUTOINCREMENT, "+PATIENT_NAME_FIELD+" TEXT, "+PATIENT_PROFILE_TYPE+" TEXT, "+PATIENT_GENDER+" TEXT, "+PATIENT_BLOOD_GROUP+" TEXT, "+CURRENT_DATE+" TEXT, "+PATIENT_AGE+" INTEGER, "+ PATIENT_HEIGHT +" DOUBLE, "+PATIENT_WEIGHT+" DOUBLE, "+PATIENT_PHONE_NUMBER+" TEXT, "+PATIENT_EMAIL+" TEXT, "+PATIENT_CONDITION+" TEXT, "+PATIENT_IMAGE+" TEXT)";
 
     public DbHelper(Context context){
 
@@ -55,7 +55,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(PATIENT_ID, patient.getId());
+        values.put(ID_FIELD, patient.getId());
         values.put(PATIENT_NAME_FIELD, patient.getName());
         values.put(PATIENT_PROFILE_TYPE, patient.getPatientType());
         values.put(PATIENT_GENDER, patient.getGender());
@@ -88,7 +88,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
                 cursor.moveToFirst();
                 do {
-                    int id = cursor.getInt(cursor.getColumnIndex(PATIENT_ID));
+                    int id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
                     String name = cursor.getString(cursor.getColumnIndex(PATIENT_NAME_FIELD));
                     String profileType = cursor.getString(cursor.getColumnIndex(PATIENT_PROFILE_TYPE));
                     String gender = cursor.getString(cursor.getColumnIndex(PATIENT_GENDER));

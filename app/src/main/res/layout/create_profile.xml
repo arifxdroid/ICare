@@ -37,7 +37,8 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="Set Profile Type"/>
+                    android:text="Set Profile Type"
+                    android:textColor="#000000"/>
                 <Spinner
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
@@ -71,15 +72,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Gender:"/>
+                android:text="Gender:"
+                android:textColor="#000000"/>
 
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rgGender"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginLeft="8dp">
               <RadioButton
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -107,6 +110,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_height="wrap_content"
                 android:text="Blood Group: "
+                android:textColor="#000000"
                 />
 
             <EditText
@@ -129,9 +133,10 @@
                 android:layout_height="wrap_content"
                 android:text="Current Date: "
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000"
                 />
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/etCurrentDate"
                 android:hint="DD-MM-YY"/>
@@ -148,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:text="Age: "
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000"
                 />
             <EditText
                 android:layout_width="60dp"
@@ -166,10 +172,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Height: "/>
+                android:text="Height: "
+                android:textColor="#000000"/>
             <EditText
                 android:id="@+id/etHeight"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:layout_marginLeft="5dp"
@@ -179,8 +186,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="inch "
+                android:text="inch.  "
                 android:layout_marginLeft="3dp"
+                android:textColor="#000000"
                 />
 
             <TextView
@@ -188,10 +196,11 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="Weight: "/>
+                android:text="Weight: "
+                android:textColor="#000000"/>
             <EditText
                 android:id="@+id/etWeight"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:layout_marginLeft="5dp"
@@ -201,8 +210,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Kg"
+                android:text="Kg."
                 android:layout_marginLeft="3dp"
+                android:textColor="#000000"
                 />
 
             </LinearLayout>
@@ -215,12 +225,13 @@
                 android:layout_width="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_height="wrap_content"
-                android:text="Phone: "/>
+                android:text="Phone: "
+                android:textColor="#000000"/>
                 />
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:layout_marginLeft="5dp"
                 android:hint="Enter Phone Number"
@@ -237,6 +248,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_height="wrap_content"
                 android:text="Email: "
+                android:textColor="#000000"
                 />
 
             <EditText
@@ -256,6 +268,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Current Disease and Condition: "
+                android:textColor="#000000"
                 />
 
             <EditText
@@ -270,11 +283,11 @@
                 android:background="@android:color/background_light"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:id="@+id/btnSave"
             android:text="Save"
-            android:onClick="btnSave"
             android:layout_gravity="center"/>
     </LinearLayout>
 </LinearLayout>

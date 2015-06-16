@@ -159,4 +159,6 @@ public class Patient {
     public void setPatientImage(Uri patientImage) {
         this.patientImage = patientImage;
     }
+
+
 }
