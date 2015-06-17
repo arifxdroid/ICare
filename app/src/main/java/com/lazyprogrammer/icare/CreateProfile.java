@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,8 +18,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -27,15 +27,19 @@ import java.util.Calendar;
 public class CreateProfile extends ActionBarActivity {
 
 
-    EditText etPatientName,etBlood,etCurrentDate, etAge,etHeight,etWeight,etPhone,etEmail,etPatientCondition;
+    EditText etPatientName,etCurrentDate, etAge,etHeight,etWeight,etPhone,etEmail,etPatientCondition;
     ImageView imageView;
-    Spinner spnType;
+    Spinner spnType,spnBlood;
     Button btnSave;
+    ArrayAdapter<String> adapterProfileType,adapterBlood;
+    ProfileDAO profileDAO;
 
     private String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
     private int DATE_PICKER = 1;
     private String[] typeList={"My Own","Father","Mother","Brother","Sister","Grand Father","Grand Mother","Children","Other"};
+    private  String[] typeBlood = {"A+","A-","B+","B-","AB+","AB-","O+","O-"};
+    private  String bloodType;
     private String profileType;
     private String gender;
     private Uri imgUri = Uri.parse("android.resource://com.lazyprogrammer.icare/drawable/pa.png");
@@ -47,6 +51,7 @@ public class CreateProfile extends ActionBarActivity {
 
 
         setInitialize();
+        profileDAO = new ProfileDAO(this);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
@@ -65,13 +70,27 @@ public class CreateProfile extends ActionBarActivity {
         });
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_spinner,R.id.txtSpinner,typeList);
-        spnType.setAdapter(adapter);
+        adapterProfileType = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_spinner,R.id.txtSpinner,typeList);
+        spnType.setAdapter(adapterProfileType);
         spnType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
 
                 profileType = typeList[pos];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        adapterBlood = new ArrayAdapter<String>(getApplicationContext(),R.layout.custom_spinner,R.id.txtSpinner,typeBlood);
+        spnBlood.setAdapter(adapterBlood);
+        spnBlood.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+
+                bloodType = typeBlood[pos];
             }
 
             @Override
@@ -93,7 +112,7 @@ public class CreateProfile extends ActionBarActivity {
             public void onClick(View view) {
 
                 String name = etPatientName.getText().toString();
-                String bloodGroup = etBlood.getText().toString();
+               // String bloodGroup = etBlood.getText().toString();
                 String currentDate = etCurrentDate.getText().toString();
                 int age = Integer.parseInt(etAge.getText().toString());
                 double height = Double.parseDouble(etHeight.getText().toString());
@@ -102,8 +121,25 @@ public class CreateProfile extends ActionBarActivity {
                 String email = etEmail.getText().toString();
                 String patientCondition = etPatientCondition.getText().toString();
 
-                Patient patient = new Patient(name , profileType , gender , bloodGroup , currentDate , age , height , weight , phone , email , patientCondition , imgUri);
+                if (!name.equals("") && !profileType.equals("") && !gender.equals("") && !bloodType.equals("") && !currentDate.equals("") && age!=0
+                        && height!=0 && weight!=0 && !patientCondition.equals("")){
 
+                    Patient patient = new Patient(name , profileType , gender , bloodType , currentDate , age , height , weight , phone , email , patientCondition , imgUri);
+                    profileDAO.addPatient(patient);
+                    Toast.makeText(getApplicationContext(), "Save Success!", Toast.LENGTH_SHORT).show();
+
+                    Intent i= new Intent(CreateProfile.this,MainActivity.class);
+                    startActivity(i);
+
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    finish();
+
+
+                }
+                else {
+                    String text="Please Complete Information";
+                    Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -132,7 +168,6 @@ public class CreateProfile extends ActionBarActivity {
     public void setInitialize() {
 
         etPatientName = (EditText)findViewById(R.id.etPatientName);
-        etBlood= (EditText) findViewById(R.id.etBlood);
         etCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
         etAge= (EditText) findViewById(R.id.etAge);
         etHeight= (EditText) findViewById(R.id.etHeight);
@@ -142,6 +177,7 @@ public class CreateProfile extends ActionBarActivity {
         etPatientCondition= (EditText) findViewById(R.id.etPatientCondition);
         imageView= (ImageView) findViewById(R.id.imageView);
         spnType= (Spinner) findViewById(R.id.spnType);
+        spnBlood= (Spinner) findViewById(R.id.spnBlood);
         btnSave = (Button)findViewById(R.id.btnSave);
 
     }
