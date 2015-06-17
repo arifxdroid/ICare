@@ -51,66 +51,66 @@ public class DbHelper extends SQLiteOpenHelper {
 
     }
 
-    public long addPatient(Patient patient){
+//    public long addPatient(Patient patient){
+//
+//        SQLiteDatabase db = getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(ID_FIELD, patient.getId());
+//        values.put(PATIENT_NAME_FIELD, patient.getName());
+//        values.put(PATIENT_PROFILE_TYPE, patient.getPatientType());
+//        values.put(PATIENT_GENDER, patient.getGender());
+//        values.put(PATIENT_BLOOD_GROUP, patient.getBloodGroup());
+//        values.put(CURRENT_DATE, patient.getCurrentDate());
+//        values.put(PATIENT_AGE, patient.getAge());
+//        values.put(PATIENT_HEIGHT, patient.getHeight());
+//        values.put(PATIENT_WEIGHT, patient.getWeight());
+//        values.put(PATIENT_PHONE_NUMBER, patient.getPhoneNumber());
+//        values.put(PATIENT_EMAIL, patient.getEmail());
+//        values.put(PATIENT_CONDITION, patient.getPatientCondition());
+//        values.put(PATIENT_IMAGE, patient.getPatientImage().toString());
+//
+//        long inserted = db.insert(TABLE_NAME, "", values);
+//
+//        db.close();
+//
+//        return inserted;
+//    }
 
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(ID_FIELD, patient.getId());
-        values.put(PATIENT_NAME_FIELD, patient.getName());
-        values.put(PATIENT_PROFILE_TYPE, patient.getPatientType());
-        values.put(PATIENT_GENDER, patient.getGender());
-        values.put(PATIENT_BLOOD_GROUP, patient.getBloodGroup());
-        values.put(CURRENT_DATE, patient.getCurrentDate());
-        values.put(PATIENT_AGE, patient.getAge());
-        values.put(PATIENT_HEIGHT, patient.getHeight());
-        values.put(PATIENT_WEIGHT, patient.getWeight());
-        values.put(PATIENT_PHONE_NUMBER, patient.getPhoneNumber());
-        values.put(PATIENT_EMAIL, patient.getEmail());
-        values.put(PATIENT_CONDITION, patient.getPatientCondition());
-        values.put(PATIENT_IMAGE, patient.getPatientImage().toString());
-
-        long inserted = db.insert(TABLE_NAME, "", values);
-
-        db.close();
-
-        return inserted;
-    }
-
-    public ArrayList<Patient> getAllPatient(){
-
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
-        ArrayList<Patient> all = new ArrayList<>();
-
-        if (cursor != null){
-
-            if (cursor.getCount()>0){
-
-                cursor.moveToFirst();
-                do {
-                    int id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
-                    String name = cursor.getString(cursor.getColumnIndex(PATIENT_NAME_FIELD));
-                    String profileType = cursor.getString(cursor.getColumnIndex(PATIENT_PROFILE_TYPE));
-                    String gender = cursor.getString(cursor.getColumnIndex(PATIENT_GENDER));
-                    String bloodGroup = cursor.getString(cursor.getColumnIndex(PATIENT_BLOOD_GROUP));
-                    String currentDate = cursor.getString(cursor.getColumnIndex(CURRENT_DATE));
-                    int age = cursor.getInt(cursor.getColumnIndex(PATIENT_AGE));
-                    double height = cursor.getDouble(cursor.getColumnIndex(PATIENT_HEIGHT));
-                    double weight = cursor.getDouble(cursor.getColumnIndex(PATIENT_WEIGHT));
-                    String phoneNumber = cursor.getString(cursor.getColumnIndex(PATIENT_PHONE_NUMBER));
-                    String email = cursor.getString(cursor.getColumnIndex(PATIENT_EMAIL));
-                    String patientCondition = cursor.getString(cursor.getColumnIndex(PATIENT_CONDITION));
-                    String patientImage = cursor.getString(cursor.getColumnIndex(PATIENT_IMAGE));
-                    Uri image = Uri.parse(patientImage);
-
-                    all.add(new Patient(name,profileType,gender,bloodGroup,currentDate,age,id,height,weight,phoneNumber,email,patientCondition,image));
-
-                }while (cursor.moveToNext());
-            }
-        }
-
-        db.close();
-        cursor.close();
-        return all;
-    }
+//    public ArrayList<Patient> getAllPatient(){
+//
+//        SQLiteDatabase db = getReadableDatabase();
+//        Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null);
+//        ArrayList<Patient> all = new ArrayList<>();
+//
+//        if (cursor != null){
+//
+//            if (cursor.getCount()>0){
+//
+//                cursor.moveToFirst();
+//                do {
+//                    int id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
+//                    String name = cursor.getString(cursor.getColumnIndex(PATIENT_NAME_FIELD));
+//                    String profileType = cursor.getString(cursor.getColumnIndex(PATIENT_PROFILE_TYPE));
+//                    String gender = cursor.getString(cursor.getColumnIndex(PATIENT_GENDER));
+//                    String bloodGroup = cursor.getString(cursor.getColumnIndex(PATIENT_BLOOD_GROUP));
+//                    String currentDate = cursor.getString(cursor.getColumnIndex(CURRENT_DATE));
+//                    int age = cursor.getInt(cursor.getColumnIndex(PATIENT_AGE));
+//                    double height = cursor.getDouble(cursor.getColumnIndex(PATIENT_HEIGHT));
+//                    double weight = cursor.getDouble(cursor.getColumnIndex(PATIENT_WEIGHT));
+//                    String phoneNumber = cursor.getString(cursor.getColumnIndex(PATIENT_PHONE_NUMBER));
+//                    String email = cursor.getString(cursor.getColumnIndex(PATIENT_EMAIL));
+//                    String patientCondition = cursor.getString(cursor.getColumnIndex(PATIENT_CONDITION));
+//                    String patientImage = cursor.getString(cursor.getColumnIndex(PATIENT_IMAGE));
+//                    Uri image = Uri.parse(patientImage);
+//
+//                    all.add(new Patient(name,profileType,gender,bloodGroup,currentDate,age,id,height,weight,phoneNumber,email,patientCondition,image));
+//
+//                }while (cursor.moveToNext());
+//            }
+//        }
+//
+//        db.close();
+//        cursor.close();
+//        return all;
+//    }
 }
