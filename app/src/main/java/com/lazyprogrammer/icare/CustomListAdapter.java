@@ -52,9 +52,11 @@ public class CustomListAdapter extends BaseAdapter {
         TextView txtListName = (TextView)listLayout.findViewById(R.id.txtListName);
         TextView txtListType = (TextView)listLayout.findViewById(R.id.txtListType);
 
-        String name = patient.get(position).getName();
-        String type = patient.get(position).getPatientType();
-        Uri imgUri = patient.get(position).getPatientImage();
+        Patient currentPatient = patient.get(position);
+
+        String name = currentPatient.getName();
+        String type = currentPatient.getPatientType();
+        Uri imgUri = currentPatient.getPatientImage();
 
         imgViewList.setImageURI(imgUri);
         txtListName.setText(name);

@@ -250,13 +250,20 @@ public class CreateProfile extends ActionBarActivity {
     }
 
     @Override
-    protected void onPause() {
+    public void onBackPressed() {
 
         Intent i= new Intent(CreateProfile.this,MainActivity.class);
         startActivity(i);
 
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         finish();
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
         super.onPause();
     }
+
+
 }

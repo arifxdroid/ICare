@@ -58,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
             Intent i = new Intent(MainActivity.this, CreateProfile.class);
             startActivity(i);
             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            finish();
             return true;
         }
 

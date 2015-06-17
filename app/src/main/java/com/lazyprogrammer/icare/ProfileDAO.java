@@ -39,13 +39,14 @@ public class ProfileDAO {
 
     public void close(){
 
-        dbHelper.close();
+        myDatabase.close();
 
     }
 
     public long addPatient(Patient patient){
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //SQLiteDatabase db = dbHelper.getWritableDatabase();
+        myDatabase = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(dbHelper.ID_FIELD, patient.getId());
         values.put(dbHelper.PATIENT_NAME_FIELD, patient.getName());
@@ -61,9 +62,9 @@ public class ProfileDAO {
         values.put(dbHelper.PATIENT_CONDITION, patient.getPatientCondition());
         values.put(dbHelper.PATIENT_IMAGE, patient.getPatientImage().toString());
 
-        long inserted = db.insert(dbHelper.TABLE_NAME, "", values);
+        long inserted = myDatabase.insert(dbHelper.TABLE_NAME, "", values);
 
-        db.close();
+        close();
 
         return inserted;
     }
@@ -71,8 +72,8 @@ public class ProfileDAO {
 
     public ArrayList<Patient> getAllPatient(){
 
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(dbHelper.TABLE_NAME, null,null,null,null,null,null);
+        myDatabase = dbHelper.getReadableDatabase();
+        Cursor cursor = myDatabase.query(dbHelper.TABLE_NAME, null,null,null,null,null,null);
         ArrayList<Patient> all = new ArrayList<>();
 
         if (cursor != null){
@@ -102,17 +103,17 @@ public class ProfileDAO {
             }
         }
 
-        db.close();
+        myDatabase.close();
         cursor.close();
         return all;
     }
 
 
     public int deletePatient(int id){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        int deleted = db.delete(dbHelper.TABLE_NAME, dbHelper.ID_FIELD+"=?", new String[]{""+id});
+        myDatabase = dbHelper.getWritableDatabase();
+        int deleted = myDatabase.delete(dbHelper.TABLE_NAME, dbHelper.ID_FIELD+"=?", new String[]{""+id});
 
-        db.close();
+        myDatabase.close();
         return deleted;
     }
 
