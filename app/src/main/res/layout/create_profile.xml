@@ -151,6 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Age: "
+                android:inputType="number"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#000000"
                 />
@@ -276,10 +277,9 @@
                 android:layout_height="110dp"
                 android:layout_marginTop="8dp"
                 android:inputType="textEmailAddress"
-                android:hint="     Health condition.
-     or Disease name. "
+                android:hint="     Health condition.or Disease name. "
                 android:textColor="@android:color/black"
-                android:background="@android:color/background_light"
+                android:background="@android:color/holo_blue_bright"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         <Button
             android:layout_width="100dp"
