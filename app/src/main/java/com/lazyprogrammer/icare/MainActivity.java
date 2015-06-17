@@ -10,22 +10,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends ActionBarActivity {
 
     ListView lvName;
+    private ProfileDAO profileDAO;
+    private ArrayList<Patient> allPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        profileDAO = new ProfileDAO(this);
+        allPatient = profileDAO.getAllPatient();
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
 
         lvName = (ListView)findViewById(R.id.lvName);
+
+        CustomListAdapter listAdapter = new CustomListAdapter(this, allPatient);
+
+
     }
 
 

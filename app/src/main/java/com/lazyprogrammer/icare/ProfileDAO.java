@@ -107,4 +107,13 @@ public class ProfileDAO {
         return all;
     }
 
+
+    public int deletePatient(int id){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int deleted = db.delete(dbHelper.TABLE_NAME, dbHelper.ID_FIELD+"=?", new String[]{""+id});
+
+        db.close();
+        return deleted;
+    }
+
 }
