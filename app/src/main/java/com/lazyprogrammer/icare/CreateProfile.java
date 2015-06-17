@@ -248,4 +248,15 @@ public class CreateProfile extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onPause() {
+
+        Intent i= new Intent(CreateProfile.this,MainActivity.class);
+        startActivity(i);
+
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        finish();
+        super.onPause();
+    }
 }
