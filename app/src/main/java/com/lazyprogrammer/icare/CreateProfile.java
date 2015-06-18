@@ -36,13 +36,12 @@ public class CreateProfile extends ActionBarActivity {
 
     private String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-    private int DATE_PICKER = 1;
     private String[] typeList={"My Own","Father","Mother","Brother","Sister","Grand Father","Grand Mother","Children","Other"};
     private  String[] typeBlood = {"A+","A-","B+","B-","AB+","AB-","O+","O-"};
     private  String bloodType;
     private String profileType;
     private String gender;
-    private Uri imgUri = Uri.parse("android.resource://com.lazyprogrammer.icare/drawable/pa.png");
+    private Uri imgUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,6 @@ public class CreateProfile extends ActionBarActivity {
         profileDAO = new ProfileDAO(this);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
 
 
@@ -229,19 +227,17 @@ public class CreateProfile extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_create_profile, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
