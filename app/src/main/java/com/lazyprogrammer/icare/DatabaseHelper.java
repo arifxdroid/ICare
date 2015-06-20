@@ -75,75 +75,75 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-//    public ArrayList<PatientTamplate> getAllPatient(){
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null,null);
-//        ArrayList<PatientTamplate> all = new ArrayList<PatientTamplate>();
-//
-//        if (cursor != null){
-//
-//            if (cursor.getCount()>0){
-//
-//                cursor.moveToFirst();
-//                do {
-//                    int id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
-//                    String name = cursor.getString(cursor.getColumnIndex(PATIENT_NAME_FIELD));
-//                    String profileType = cursor.getString(cursor.getColumnIndex(PATIENT_PROFILE_TYPE));
-//                    String gender = cursor.getString(cursor.getColumnIndex(PATIENT_GENDER));
-//                    String bloodGroup = cursor.getString(cursor.getColumnIndex(PATIENT_BLOOD_GROUP));
-//                    String currentDate = cursor.getString(cursor.getColumnIndex(CURRENT_DATE));
-//                    int age = cursor.getInt(cursor.getColumnIndex(PATIENT_AGE));
-//                    double height = cursor.getDouble(cursor.getColumnIndex(PATIENT_HEIGHT));
-//                    double weight = cursor.getDouble(cursor.getColumnIndex(PATIENT_WEIGHT));
-//                    String phoneNumber = cursor.getString(cursor.getColumnIndex(PATIENT_PHONE_NUMBER));
-//                    String email = cursor.getString(cursor.getColumnIndex(PATIENT_EMAIL));
-//                    String patientCondition = cursor.getString(cursor.getColumnIndex(PATIENT_CONDITION));
-//                    byte[] patientImage = cursor.getBlob(cursor.getColumnIndex(PATIENT_IMAGE));
-//
-//                    PatientTamplate patient = new PatientTamplate(id,name,profileType,gender,bloodGroup,currentDate,age,height,weight,phoneNumber,email,patientCondition,patientImage);
-//                    all.add(patient);
-//
-//                }while (cursor.moveToNext());
-//            }
-//        }
-//
-//        db.close();
-//        cursor.close();
-//        return all;
-//    }
+    public ArrayList<PatientTemplate> getAllPatient(){
 
-    public ArrayList<PatientTemplate> getAll(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NAME,null,null,null,null,null,null,null);
-        ArrayList<PatientTemplate> all = new ArrayList<>();
+        Cursor cursor = db.query(TABLE_NAME, null,null,null,null,null,null,null);
+        ArrayList<PatientTemplate> all = new ArrayList<PatientTemplate>();
+
         if (cursor != null){
+
             if (cursor.getCount()>0){
+
                 cursor.moveToFirst();
                 do {
                     int id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
                     String name = cursor.getString(cursor.getColumnIndex(PATIENT_NAME_FIELD));
                     String profileType = cursor.getString(cursor.getColumnIndex(PATIENT_PROFILE_TYPE));
                     String gender = cursor.getString(cursor.getColumnIndex(PATIENT_GENDER));
-                    String blood = cursor.getString(cursor.getColumnIndex(PATIENT_BLOOD_GROUP));
+                    String bloodGroup = cursor.getString(cursor.getColumnIndex(PATIENT_BLOOD_GROUP));
                     String currentDate = cursor.getString(cursor.getColumnIndex(CURRENT_DATE));
                     int age = cursor.getInt(cursor.getColumnIndex(PATIENT_AGE));
                     double height = cursor.getDouble(cursor.getColumnIndex(PATIENT_HEIGHT));
                     double weight = cursor.getDouble(cursor.getColumnIndex(PATIENT_WEIGHT));
-                    String phone = cursor.getString(cursor.getColumnIndex(PATIENT_PHONE_NUMBER));
+                    String phoneNumber = cursor.getString(cursor.getColumnIndex(PATIENT_PHONE_NUMBER));
                     String email = cursor.getString(cursor.getColumnIndex(PATIENT_EMAIL));
                     String patientCondition = cursor.getString(cursor.getColumnIndex(PATIENT_CONDITION));
-                    byte[] image = cursor.getBlob(cursor.getColumnIndex(PATIENT_IMAGE));
+                    byte[] patientImage = cursor.getBlob(cursor.getColumnIndex(PATIENT_IMAGE));
 
-                    PatientTemplate patient = new PatientTemplate(id,name,profileType,gender,blood,currentDate,age,height,weight,phone,email,patientCondition,image);
+                    PatientTemplate patient = new PatientTemplate(id,name,profileType,gender,bloodGroup,currentDate,age,height,weight,phoneNumber,email,patientCondition,patientImage);
                     all.add(patient);
+
                 }while (cursor.moveToNext());
             }
         }
+
         db.close();
         cursor.close();
         return all;
     }
+
+//    public ArrayList<PatientTemplate> getAll(){
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.query(TABLE_NAME,null,null,null,null,null,null,null);
+//        ArrayList<PatientTemplate> all = new ArrayList<>();
+//        if (cursor != null){
+//            if (cursor.getCount()>0){
+//                cursor.moveToFirst();
+//                do {
+//                    int id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
+//                    String name = cursor.getString(cursor.getColumnIndex(PATIENT_NAME_FIELD));
+//                    String profileType = cursor.getString(cursor.getColumnIndex(PATIENT_PROFILE_TYPE));
+//                    String gender = cursor.getString(cursor.getColumnIndex(PATIENT_GENDER));
+//                    String blood = cursor.getString(cursor.getColumnIndex(PATIENT_BLOOD_GROUP));
+//                    String currentDate = cursor.getString(cursor.getColumnIndex(CURRENT_DATE));
+//                    int age = cursor.getInt(cursor.getColumnIndex(PATIENT_AGE));
+//                    double height = cursor.getDouble(cursor.getColumnIndex(PATIENT_HEIGHT));
+//                    double weight = cursor.getDouble(cursor.getColumnIndex(PATIENT_WEIGHT));
+//                    String phone = cursor.getString(cursor.getColumnIndex(PATIENT_PHONE_NUMBER));
+//                    String email = cursor.getString(cursor.getColumnIndex(PATIENT_EMAIL));
+//                    String patientCondition = cursor.getString(cursor.getColumnIndex(PATIENT_CONDITION));
+//                    byte[] image = cursor.getBlob(cursor.getColumnIndex(PATIENT_IMAGE));
+//
+//                    PatientTemplate patient = new PatientTemplate(id,name,profileType,gender,blood,currentDate,age,height,weight,phone,email,patientCondition,image);
+//                    all.add(patient);
+//                }while (cursor.moveToNext());
+//            }
+//        }
+//        db.close();
+//        cursor.close();
+//        return all;
+//    }
 
     public int deletePatient(int id){
         SQLiteDatabase db = getWritableDatabase();

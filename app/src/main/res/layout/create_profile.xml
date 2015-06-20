@@ -58,7 +58,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/etPatientName"
             android:hint="Enter Name"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:background="@android:color/holo_blue_bright"
+            />
 
 
 
@@ -134,7 +136,7 @@
                 android:textColor="#000000"
                 />
             <EditText
-                android:layout_width="140dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/etCurrentDate"
                 android:hint="DD-MM-YY"
@@ -159,6 +161,7 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/etAge"
+                android:inputType="numberDecimal"
                 android:hint="0.0"/>
 
         </LinearLayout>
@@ -276,8 +279,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:layout_marginTop="8dp"
-                android:inputType="textEmailAddress"
-                android:hint="     Health condition.or Disease name. "
+                android:inputType="textMultiLine"
+                android:hint="     Health condition.Or Disease name. "
                 android:textColor="@android:color/black"
                 android:background="@android:color/holo_blue_bright"
                 android:textAppearance="?android:attr/textAppearanceMedium" />

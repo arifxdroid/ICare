@@ -24,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         databaseHelper = new DatabaseHelper(this);
-        allPatient = databaseHelper.getAll();
+        allPatient = databaseHelper.getAllPatient();
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));

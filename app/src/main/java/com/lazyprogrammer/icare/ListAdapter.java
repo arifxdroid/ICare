@@ -3,6 +3,7 @@ package com.lazyprogrammer.icare;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,10 +46,18 @@ public class ListAdapter extends ArrayAdapter<PatientTemplate>{
         }
 
         PatientTemplate patient = getItem(position);
-        byte[] outImage = patient.getPatient_image();
-        ByteArrayInputStream imageStream = new ByteArrayInputStream(outImage);
-        Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-        holder.imageView.setImageBitmap(theImage);
+        if (patient.getPatient_image() != null){
+
+            byte[] outImage = patient.getPatient_image();
+            ByteArrayInputStream imageStream = new ByteArrayInputStream(outImage);
+            Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+            holder.imageView.setImageBitmap(theImage);
+        }else {
+
+
+            holder.imageView.setImageResource(R.drawable.pa);
+        }
+
         holder.txtListName.setText(patient.getName());
         holder.txtListType.setText(patient.getPatientType());
 
