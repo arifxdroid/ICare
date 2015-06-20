@@ -1,43 +1,26 @@
 package com.lazyprogrammer.icare;
 
-import android.net.Uri;
-
 /**
- * Created by arif on 6/9/15.
+ * Created by arif on 6/20/15.
  */
-public class Patient {
+public class PatientTemplate {
 
+    private int id;
     private String name;
     private String patientType;
     private String gender;
     private String bloodGroup;
     private String currentDate;
     private int age;
-    private int id;
     private double height;
     private double weight;
     private String phoneNumber;
     private String email;
     private String patientCondition;
-    private Uri patientImage;
+    private byte[] patient_image;
 
-    public Patient(String name, String patientType, String gender, String bloodGroup, String currentDate, int age, int id, double height, double weight, String phoneNumber, String email, String patientCondition, Uri patientImage) {
-        this.name = name;
-        this.patientType = patientType;
-        this.gender = gender;
-        this.bloodGroup = bloodGroup;
-        this.currentDate = currentDate;
-        this.age = age;
+    public PatientTemplate(int id, String name, String patientType, String gender, String bloodGroup, String currentDate, int age, double height, double weight, String phoneNumber, String email, String patientCondition, byte[] patient_image) {
         this.id = id;
-        this.height = height;
-        this.weight = weight;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.patientCondition = patientCondition;
-        this.patientImage = patientImage;
-    }
-
-    public Patient(String name, String patientType, String gender, String bloodGroup, String currentDate, int age, double height, double weight, String phoneNumber, String email, String patientCondition, Uri patientImage) {
         this.name = name;
         this.patientType = patientType;
         this.gender = gender;
@@ -49,11 +32,34 @@ public class Patient {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.patientCondition = patientCondition;
-        this.patientImage = patientImage;
+        this.patient_image = patient_image;
     }
 
-    public Patient(){
+    public PatientTemplate(String name, String patientType, String gender, String bloodGroup, String currentDate, int age, double height, double weight, String phoneNumber, String email, String patientCondition, byte[] patient_image) {
+        this.name = name;
+        this.patientType = patientType;
+        this.gender = gender;
+        this.bloodGroup = bloodGroup;
+        this.currentDate = currentDate;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.patientCondition = patientCondition;
+        this.patient_image = patient_image;
+    }
 
+    public PatientTemplate(){
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -96,22 +102,6 @@ public class Patient {
         this.currentDate = currentDate;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public double getHeight() {
         return height;
     }
@@ -152,13 +142,19 @@ public class Patient {
         this.patientCondition = patientCondition;
     }
 
-    public Uri getPatientImage() {
-        return patientImage;
+    public byte[] getPatient_image() {
+        return patient_image;
     }
 
-    public void setPatientImage(Uri patientImage) {
-        this.patientImage = patientImage;
+    public void setPatient_image(byte[] patient_image) {
+        this.patient_image = patient_image;
     }
 
+    public int getAge() {
+        return age;
+    }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
 }

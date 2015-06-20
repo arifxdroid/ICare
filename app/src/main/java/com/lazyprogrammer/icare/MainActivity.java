@@ -15,16 +15,16 @@ import java.util.ArrayList;
 public class MainActivity extends ActionBarActivity {
 
     ListView lvName;
-    private ProfileDAO profileDAO;
-    private ArrayList<Patient> allPatient;
+    private ArrayList<PatientTemplate> allPatient;
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        profileDAO = new ProfileDAO(this);
-        allPatient = profileDAO.getAllPatient();
+        databaseHelper = new DatabaseHelper(this);
+        allPatient = databaseHelper.getAll();
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));

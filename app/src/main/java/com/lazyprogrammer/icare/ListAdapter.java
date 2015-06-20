@@ -1,6 +1,8 @@
 package com.lazyprogrammer.icare;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,15 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 /**
  * Created by arif on 6/18/15.
  */
-public class ListAdapter extends ArrayAdapter<Patient>{
+public class ListAdapter extends ArrayAdapter<PatientTemplate>{
 
 
-    public ListAdapter(Context context, List<Patient> objects) {
+    public ListAdapter(Context context, List<PatientTemplate> objects) {
         super(context, 0 , objects);
     }
 
@@ -41,8 +44,11 @@ public class ListAdapter extends ArrayAdapter<Patient>{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Patient patient = getItem(position);
-        holder.imageView.setImageURI(patient.getPatientImage());
+        PatientTemplate patient = getItem(position);
+        byte[] outImage = patient.getPatient_image();
+        ByteArrayInputStream imageStream = new ByteArrayInputStream(outImage);
+        Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+        holder.imageView.setImageBitmap(theImage);
         holder.txtListName.setText(patient.getName());
         holder.txtListType.setText(patient.getPatientType());
 

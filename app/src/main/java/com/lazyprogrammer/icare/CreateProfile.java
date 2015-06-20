@@ -3,7 +3,9 @@ package com.lazyprogrammer.icare;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 
 
@@ -32,7 +35,8 @@ public class CreateProfile extends ActionBarActivity {
     Spinner spnType,spnBlood;
     Button btnSave;
     ArrayAdapter<String> adapterProfileType,adapterBlood;
-    ProfileDAO profileDAO;
+    DatabaseHelper databaseHelper;
+    byte[] fianalImage;
 
     private String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -48,12 +52,26 @@ public class CreateProfile extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_profile);
 
-
-        setInitialize();
-        profileDAO = new ProfileDAO(this);
-
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
+
+
+        // setInitialize();
+        etPatientName = (EditText)findViewById(R.id.etPatientName);
+        etCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
+        etAge= (EditText) findViewById(R.id.etAge);
+        etHeight= (EditText) findViewById(R.id.etHeight);
+        etWeight= (EditText) findViewById(R.id.etWeight);
+        etPhone= (EditText) findViewById(R.id.etPhone);
+        etEmail= (EditText) findViewById(R.id.etEmail);
+        etPatientCondition= (EditText) findViewById(R.id.etPatientCondition);
+        imageView= (ImageView) findViewById(R.id.imageView);
+        spnType= (Spinner) findViewById(R.id.spnType);
+        spnBlood= (Spinner) findViewById(R.id.spnBlood);
+        btnSave = (Button)findViewById(R.id.btnSave);
+
+
+        databaseHelper = new DatabaseHelper(this);
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -122,21 +140,27 @@ public class CreateProfile extends ActionBarActivity {
                 if (!name.equals("") && !profileType.equals("") && !gender.equals("") && !bloodType.equals("") && !currentDate.equals("") && age!=0
                         && height!=0 && weight!=0 && !patientCondition.equals("")){
 
-                    Patient patient = new Patient(name , profileType , gender , bloodType , currentDate , age , height , weight , phone , email , patientCondition , imgUri);
-                    profileDAO.addPatient(patient);
-                    Toast.makeText(getApplicationContext(), "Save Success!", Toast.LENGTH_SHORT).show();
+                    PatientTemplate p = new PatientTemplate(name,profileType,gender,bloodType,currentDate,age,height,weight,phone,email,patientCondition,fianalImage);
+                    long insert = databaseHelper.addPatient(p);
 
-                    Intent i= new Intent(CreateProfile.this,MainActivity.class);
-                    startActivity(i);
+                    if (insert == -1){
 
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    finish();
+                        String text="Sorry";
+                        Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+                    }else {
 
 
-                }
-                else {
-                    String text="Please Complete Information";
-                    Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Save Success!", Toast.LENGTH_SHORT).show();
+
+                        Intent i= new Intent(CreateProfile.this,MainActivity.class);
+                        startActivity(i);
+
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        finish();
+
+                    }
+                }else {
+                    Toast.makeText(getApplicationContext(), "Complete Information!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -219,8 +243,13 @@ public class CreateProfile extends ActionBarActivity {
 
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
-                imgUri = data.getData();
                 imageView.setImageURI(data.getData());
+                BitmapDrawable d = (BitmapDrawable) imageView.getDrawable();
+                Bitmap image = d.getBitmap();
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                fianalImage = stream.toByteArray();
+
             }
         }
     }
