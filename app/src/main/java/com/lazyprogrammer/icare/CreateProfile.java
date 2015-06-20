@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -30,8 +31,9 @@ import java.util.Calendar;
 public class CreateProfile extends ActionBarActivity {
 
 
-    EditText etPatientName,etCurrentDate, etAge,etHeight,etWeight,etPhone,etEmail,etPatientCondition;
+    EditText etPatientName, etAge,etHeight,etWeight,etPhone,etEmail,etPatientCondition;
     ImageView imageView;
+    TextView tvCurrentDate;
     Spinner spnType,spnBlood;
     Button btnSave;
     ArrayAdapter<String> adapterProfileType,adapterBlood;
@@ -58,7 +60,7 @@ public class CreateProfile extends ActionBarActivity {
 
         // setInitialize();
         etPatientName = (EditText)findViewById(R.id.etPatientName);
-        etCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
+        tvCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
         etAge= (EditText) findViewById(R.id.etAge);
         etHeight= (EditText) findViewById(R.id.etHeight);
         etWeight= (EditText) findViewById(R.id.etWeight);
@@ -115,7 +117,7 @@ public class CreateProfile extends ActionBarActivity {
             }
         });
 
-        etCurrentDate.setOnClickListener(new View.OnClickListener() {
+        tvCurrentDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDialog(1);
@@ -129,7 +131,7 @@ public class CreateProfile extends ActionBarActivity {
 
                 String name = etPatientName.getText().toString();
                // String bloodGroup = etBlood.getText().toString();
-                String currentDate = etCurrentDate.getText().toString();
+                String currentDate = tvCurrentDate.getText().toString();
                 int age = Integer.parseInt(etAge.getText().toString());
                 double height = Double.parseDouble(etHeight.getText().toString());
                 double weight = Double.parseDouble(etWeight.getText().toString());
@@ -190,7 +192,7 @@ public class CreateProfile extends ActionBarActivity {
     public void setInitialize() {
 
         etPatientName = (EditText)findViewById(R.id.etPatientName);
-        etCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
+        tvCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
         etAge= (EditText) findViewById(R.id.etAge);
         etHeight= (EditText) findViewById(R.id.etHeight);
         etWeight= (EditText) findViewById(R.id.etWeight);
@@ -227,12 +229,12 @@ public class CreateProfile extends ActionBarActivity {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
 
-            if (etCurrentDate.getText().toString() != null){
-                etCurrentDate.setText(" ");
-                etCurrentDate.setText(dayOfMonth+" - "+months[monthOfYear]+" - "+year);
+            if (tvCurrentDate.getText().toString() != null){
+                tvCurrentDate.setText(" ");
+                tvCurrentDate.setText(dayOfMonth+" - "+months[monthOfYear]+" - "+year);
             }else {
 
-                etCurrentDate.setText(dayOfMonth+" - "+months[monthOfYear]+" - "+year);
+                tvCurrentDate.setText(dayOfMonth+" - "+months[monthOfYear]+" - "+year);
             }
 
         }

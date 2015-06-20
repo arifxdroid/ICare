@@ -20,6 +20,10 @@
             android:name=".CreateProfile"
             android:label="@string/title_activity_create_profile" >
         </activity>
+        <activity
+            android:name=".AllService"
+            android:label="@string/title_activity_all_service" >
+        </activity>
     </application>
 
 </manifest>
