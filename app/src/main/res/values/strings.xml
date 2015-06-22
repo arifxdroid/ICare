@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_create_profile">Patient Profile</string>
     <string name="title_activity_all_service">All Service</string>
+    <string name="title_activity_my_diet_chart">My Diet Chart</string>
+    <string name="title_activity_add_diet_chart">Add Diet Chart</string>
 </resources>

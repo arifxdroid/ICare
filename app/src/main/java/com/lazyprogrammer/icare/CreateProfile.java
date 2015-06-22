@@ -60,7 +60,7 @@ public class CreateProfile extends ActionBarActivity {
 
         // setInitialize();
         etPatientName = (EditText)findViewById(R.id.etPatientName);
-        tvCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
+        tvCurrentDate= (TextView) findViewById(R.id.tvCurrentDate);
         etAge= (EditText) findViewById(R.id.etAge);
         etHeight= (EditText) findViewById(R.id.etHeight);
         etWeight= (EditText) findViewById(R.id.etWeight);
@@ -192,7 +192,7 @@ public class CreateProfile extends ActionBarActivity {
     public void setInitialize() {
 
         etPatientName = (EditText)findViewById(R.id.etPatientName);
-        tvCurrentDate= (EditText) findViewById(R.id.etCurrentDate);
+        tvCurrentDate= (TextView) findViewById(R.id.tvCurrentDate);
         etAge= (EditText) findViewById(R.id.etAge);
         etHeight= (EditText) findViewById(R.id.etHeight);
         etWeight= (EditText) findViewById(R.id.etWeight);
@@ -249,7 +249,7 @@ public class CreateProfile extends ActionBarActivity {
                 BitmapDrawable d = (BitmapDrawable) imageView.getDrawable();
                 Bitmap image = d.getBitmap();
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                image.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                image.compress(Bitmap.CompressFormat.JPEG, 10, stream);
                 fianalImage = stream.toByteArray();
 
             }

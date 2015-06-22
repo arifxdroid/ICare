@@ -33,6 +33,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String PATIENT_TABLE_SQL = "CREATE TABLE "+TABLE_NAME+" ("+ID_FIELD+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "+PATIENT_NAME_FIELD+" TEXT, "+PATIENT_PROFILE_TYPE +" TEXT, "+PATIENT_GENDER+" TEXT, "+PATIENT_BLOOD_GROUP+" TEXT, "+CURRENT_DATE+" TEXT, "+PATIENT_AGE+" INTEGER, "+PATIENT_HEIGHT+" DOUBLE, "+PATIENT_WEIGHT+" DOUBLE, "+PATIENT_PHONE_NUMBER+" TEXT, "+PATIENT_EMAIL+" TEXT, "+PATIENT_CONDITION+" TEXT, "+PATIENT_IMAGE+" BLOB)";
 
+
+    public static final String DIET_TABLE = "diet_table";
+    public static final String ID_DIET = "_ID_diet";
+    public static final String ID_PATIENT_DIET = "_ID_patient";
+    public static final String DIET_DAY_FIELD = "diet_day";
+    public static final String DIET_BREAKFAST = "diet_breakfast";
+    public static final String DIET_LUNCH = "diet_lunch";
+    public static final String DIET_DINNER = "diet_dinner";
+    public static final String DIET_FOODLIST = "diet_foodList";
+
+    public static final String DIET_TABLE_SQL = "CREATE TABLE "+DIET_TABLE+" ("+ID_DIET+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "+ID_PATIENT_DIET+" INTEGER REFERENCES "+TABLE_NAME+" ("+ID_FIELD+"), "+DIET_DAY_FIELD+" TEXT, "+DIET_BREAKFAST+" TEXT, "+DIET_LUNCH+" TEXT, "+DIET_DINNER+" TEXT, "+DIET_FOODLIST+" TEXT)";
+
+
     public DatabaseHelper(Context context){
         super(context,DATABASE_NAME,null,VERSION);
     }
@@ -41,6 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         sqLiteDatabase.execSQL(PATIENT_TABLE_SQL);
+        sqLiteDatabase.execSQL(DIET_TABLE_SQL);
 
     }
 
@@ -48,6 +62,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
 
     }
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        if (!db.isReadOnly()){
+            db.execSQL("PRAGMA foreign_keys=ON;");
+        }
+    }
+
+//    @Override
+//    public void onConfigure(SQLiteDatabase db) {
+//        super.onConfigure(db);
+//        db.setForeignKeyConstraintsEnabled(true);
+//    }
 
     public long addPatient(PatientTemplate p){
 
@@ -113,37 +141,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return all;
     }
 
-//    public ArrayList<PatientTemplate> getAll(){
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.query(TABLE_NAME,null,null,null,null,null,null,null);
-//        ArrayList<PatientTemplate> all = new ArrayList<>();
-//        if (cursor != null){
-//            if (cursor.getCount()>0){
-//                cursor.moveToFirst();
-//                do {
-//                    int id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
-//                    String name = cursor.getString(cursor.getColumnIndex(PATIENT_NAME_FIELD));
-//                    String profileType = cursor.getString(cursor.getColumnIndex(PATIENT_PROFILE_TYPE));
-//                    String gender = cursor.getString(cursor.getColumnIndex(PATIENT_GENDER));
-//                    String blood = cursor.getString(cursor.getColumnIndex(PATIENT_BLOOD_GROUP));
-//                    String currentDate = cursor.getString(cursor.getColumnIndex(CURRENT_DATE));
-//                    int age = cursor.getInt(cursor.getColumnIndex(PATIENT_AGE));
-//                    double height = cursor.getDouble(cursor.getColumnIndex(PATIENT_HEIGHT));
-//                    double weight = cursor.getDouble(cursor.getColumnIndex(PATIENT_WEIGHT));
-//                    String phone = cursor.getString(cursor.getColumnIndex(PATIENT_PHONE_NUMBER));
-//                    String email = cursor.getString(cursor.getColumnIndex(PATIENT_EMAIL));
-//                    String patientCondition = cursor.getString(cursor.getColumnIndex(PATIENT_CONDITION));
-//                    byte[] image = cursor.getBlob(cursor.getColumnIndex(PATIENT_IMAGE));
-//
-//                    PatientTemplate patient = new PatientTemplate(id,name,profileType,gender,blood,currentDate,age,height,weight,phone,email,patientCondition,image);
-//                    all.add(patient);
-//                }while (cursor.moveToNext());
-//            }
-//        }
-//        db.close();
-//        cursor.close();
-//        return all;
-//    }
+
 
     public int deletePatient(int id){
         SQLiteDatabase db = getWritableDatabase();
@@ -151,6 +149,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.close();
         return deleted;
+    }
+
+    public long addDietChart(Diet diet){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ID_PATIENT_DIET, diet.getId_patient());
+        values.put(DIET_DAY_FIELD, diet.getDay());
+        values.put(DIET_BREAKFAST, diet.getBreakfast());
+        values.put(DIET_LUNCH, diet.getLunch());
+        values.put(DIET_DINNER, diet.getDinner());
+        values.put(DIET_FOODLIST, diet.getFoodList());
+
+        long inserted = db.insert(DIET_TABLE,null,values);
+        return inserted;
+    }
+
+    public ArrayList<Diet> getAllDietChart(){
+        ArrayList<Diet> all = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        return null;
     }
 
 }

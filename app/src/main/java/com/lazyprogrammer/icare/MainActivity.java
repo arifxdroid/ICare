@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -27,16 +29,27 @@ public class MainActivity extends ActionBarActivity {
         allPatient = databaseHelper.getAllPatient();
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLUE));
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
+        actionBar.setLogo(R.mipmap.ic_launcher);
 
         lvName = (ListView)findViewById(R.id.lvName);
 
-//        CustomListAdapter listAdapter = new CustomListAdapter(this, allPatient);
-//        lvName.setAdapter(listAdapter);
-
         ListAdapter listAdapter = new ListAdapter(this, allPatient);
         lvName.setAdapter(listAdapter);
+        lvName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                PatientTemplate patient = allPatient.get(position);
+                int patient_id = patient.getId();
+
+                Intent i = new Intent(MainActivity.this, AllService.class);
+                i.putExtra("patient_id", patient_id);
+                startActivity(i);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
+            }
+        });
 
 
     }

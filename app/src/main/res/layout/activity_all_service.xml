@@ -1,201 +1,203 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-<RelativeLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_height="fill_parent"
     android:background="#18376a"
-    tools:context="com.lazyprogrammer.icare.AllService">
+    >
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.lazyprogrammer.icare.AllService">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibProfile"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/pa"
-        android:layout_alignRight="@+id/ibDiet"
-        android:layout_alignEnd="@+id/ibDiet" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibProfile"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/pa"
+            android:layout_alignRight="@+id/ibDiet"
+            android:layout_alignEnd="@+id/ibDiet" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibVaccination"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/vaccine"
-        android:layout_alignBottom="@+id/ibProfile" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibVaccination"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/vaccine"
+            android:layout_alignBottom="@+id/ibProfile" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="My Profile"
-        android:id="@+id/textView"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:layout_below="@+id/ibProfile"
-        android:layout_alignRight="@+id/ibProfile"
-        android:layout_alignEnd="@+id/ibProfile"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="My Profile"
+            android:id="@+id/textView"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:layout_below="@+id/ibProfile"
+            android:layout_alignRight="@+id/ibProfile"
+            android:layout_alignEnd="@+id/ibProfile"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="     Vaccination"
-        android:id="@+id/textView2"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:layout_below="@+id/ibVaccination"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignLeft="@+id/ibVaccination"
-        android:layout_alignStart="@+id/ibVaccination" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="     Vaccination"
+            android:id="@+id/textView2"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:layout_below="@+id/ibVaccination"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/textView"
+            android:layout_alignLeft="@+id/ibVaccination"
+            android:layout_alignStart="@+id/ibVaccination" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibDiet"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/diet" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibDiet"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/diet"
+            android:layout_alignBottom="@+id/ibMyDoctor"
+            android:layout_alignTop="@+id/ibMyDoctor" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibMyDoctor"
-        android:src="@drawable/myDoctor"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2"
-        android:layout_below="@+id/textView2" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibMyDoctor"
+            android:src="@drawable/doctors"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2"
+            android:layout_below="@+id/textView2" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Diet Chart"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/ibDiet"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Diet Chart"
+            android:id="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/textView4" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="       My Doctors"
-        android:id="@+id/textView4"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:layout_below="@+id/ibMyDoctor"
-        android:layout_alignLeft="@+id/ibMyDoctor"
-        android:layout_alignStart="@+id/ibMyDoctor" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="       My Doctors"
+            android:id="@+id/textView4"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:layout_below="@+id/ibMyDoctor"
+            android:layout_alignLeft="@+id/ibMyDoctor"
+            android:layout_alignStart="@+id/ibMyDoctor" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibMedicineRoutine"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/medicineRoutine"
-        android:layout_alignBottom="@+id/ibNote" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibMedicineRoutine"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/medicroutine"
+            android:layout_alignBottom="@+id/ibNote"
+            android:layout_below="@+id/textView4" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibNote"
-        android:src="@drawable/importantNote"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibNote"
+            android:src="@drawable/note"
+            android:layout_below="@+id/textView4"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_alignStart="@+id/textView4" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medicine Routine"
-        android:id="@+id/textView5"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:layout_below="@+id/ibMedicineRoutine"
-        android:layout_alignRight="@+id/ibMedicineRoutine"
-        android:layout_alignEnd="@+id/ibMedicineRoutine" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medicine Routine"
+            android:id="@+id/textView5"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:layout_below="@+id/ibMedicineRoutine"
+            android:layout_alignRight="@+id/ibMedicineRoutine"
+            android:layout_alignEnd="@+id/ibMedicineRoutine" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="    Important Note"
-        android:id="@+id/textView6"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/ibNote"
-        android:layout_alignLeft="@+id/ibNote"
-        android:layout_alignStart="@+id/ibNote" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="    Important Note"
+            android:id="@+id/textView6"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/ibNote"
+            android:layout_alignLeft="@+id/ibNote"
+            android:layout_alignStart="@+id/ibNote" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibEmergencyCall"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/emergencycall" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibEmergencyCall"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/emergencycall" />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ibPrescription"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/prescription"
-        android:layout_alignBottom="@+id/ibEmergencyCall" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ibPrescription"
+            android:layout_below="@+id/textView6"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/prescription"
+            android:layout_alignBottom="@+id/ibEmergencyCall" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Emergency Call"
-        android:layout_marginLeft="15dp"
-        android:id="@+id/textView7"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:layout_below="@+id/ibEmergencyCall"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Emergency Call"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/textView7"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:layout_below="@+id/ibEmergencyCall"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="    Prescription"
-        android:id="@+id/textView8"
-        android:textColor="@android:color/background_light"
-        android:textStyle="bold"
-        android:layout_below="@+id/ibPrescription"
-        android:layout_alignLeft="@+id/ibPrescription"
-        android:layout_alignStart="@+id/ibPrescription" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="    Prescription"
+            android:id="@+id/textView8"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold"
+            android:layout_below="@+id/ibPrescription"
+            android:layout_alignLeft="@+id/ibPrescription"
+            android:layout_alignStart="@+id/ibPrescription" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
 </ScrollView>
