@@ -41,10 +41,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DIET_BREAKFAST = "diet_breakfast";
     public static final String DIET_LUNCH = "diet_lunch";
     public static final String DIET_DINNER = "diet_dinner";
-    public static final String DIET_FOODLIST = "diet_foodList";
 
-    public static final String DIET_TABLE_SQL = "CREATE TABLE "+DIET_TABLE+" ("+ID_DIET+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "+ID_PATIENT_DIET+" INTEGER REFERENCES "+TABLE_NAME+" ("+ID_FIELD+"), "+DIET_DAY_FIELD+" TEXT, "+DIET_BREAKFAST+" TEXT, "+DIET_LUNCH+" TEXT, "+DIET_DINNER+" TEXT, "+DIET_FOODLIST+" TEXT)";
-
+    //public static final String DIET_TABLE_SQL = "CREATE TABLE "+DIET_TABLE+" ("+ID_DIET+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "+ID_PATIENT_DIET+" INTEGER REFERENCES "+TABLE_NAME+" ("+ID_FIELD+"), "+DIET_DAY_FIELD+" TEXT, "+DIET_BREAKFAST+" TEXT, "+DIET_LUNCH+" TEXT, "+DIET_DINNER+" TEXT)";
+    public static final String DIET_TABLE_SQL = "CREATE TABLE "+DIET_TABLE+" ("+ID_DIET+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "+ID_PATIENT_DIET+" INTEGER, "+DIET_DAY_FIELD+" TEXT, "+DIET_BREAKFAST+" TEXT, "+DIET_LUNCH+" TEXT, "+DIET_DINNER+" TEXT)";
 
     public DatabaseHelper(Context context){
         super(context,DATABASE_NAME,null,VERSION);
@@ -77,6 +76,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //        db.setForeignKeyConstraintsEnabled(true);
 //    }
 
+
+    //Add a patient profile to database.
     public long addPatient(PatientTemplate p){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -102,7 +103,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return inserted;
     }
 
+    // Updating a patient profile.
+    public int updatePatient(PatientTemplate p, int diet_id){
 
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values  = new ContentValues();
+
+        values.put(PATIENT_NAME_FIELD, p.getName());
+        values.put(PATIENT_PROFILE_TYPE, p.getPatientType());
+        values.put(PATIENT_GENDER, p.getGender());
+        values.put(PATIENT_BLOOD_GROUP, p.getBloodGroup());
+        values.put(CURRENT_DATE, p.getCurrentDate());
+        values.put(PATIENT_AGE, p.getAge());
+        values.put(PATIENT_HEIGHT, p.getHeight());
+        values.put(PATIENT_WEIGHT, p.getWeight());
+        values.put(PATIENT_PHONE_NUMBER, p.getPhoneNumber());
+        values.put(PATIENT_EMAIL, p.getEmail());
+        values.put(PATIENT_CONDITION, p.getPatientCondition());
+        values.put(PATIENT_IMAGE, p.getPatient_image());
+
+        int updated = db.update(DIET_TABLE, values, ID_DIET+"=?", new String[]{""+diet_id});
+        return updated;
+    }
+
+
+    // Get all patient profile.
     public ArrayList<PatientTemplate> getAllPatient(){
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -142,15 +167,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
+    // Delete a patient profile.
     public int deletePatient(int id){
-        SQLiteDatabase db = getWritableDatabase();
+
+        SQLiteDatabase db = this.getWritableDatabase();
         int deleted = db.delete(TABLE_NAME, ID_FIELD+"=?", new String[]{""+id});
 
         db.close();
         return deleted;
     }
 
+
+    // Add diet chart under a patient profile.
     public long addDietChart(Diet diet){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -161,17 +189,74 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(DIET_BREAKFAST, diet.getBreakfast());
         values.put(DIET_LUNCH, diet.getLunch());
         values.put(DIET_DINNER, diet.getDinner());
-        values.put(DIET_FOODLIST, diet.getFoodList());
 
         long inserted = db.insert(DIET_TABLE,null,values);
+        db.close();
         return inserted;
     }
 
-    public ArrayList<Diet> getAllDietChart(){
+
+    // Get diet chart of a patient profile holder.
+    public ArrayList<Diet> getDietChart(int id){
+
         ArrayList<Diet> all = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+DIET_TABLE+" where "+ID_PATIENT_DIET+"='" + id + "'",null);
 
-        return null;
+        if (cursor != null){
+
+            if (cursor.getCount() > 0){
+
+                cursor.moveToFirst();
+
+                do {
+
+                    int id_diet = cursor.getInt(cursor.getColumnIndex(ID_DIET));
+                    int id_patient_diet = cursor.getInt(cursor.getColumnIndex(ID_PATIENT_DIET));
+                    String diet_day = cursor.getString(cursor.getColumnIndex(DIET_DAY_FIELD));
+                    String diet_breakfast = cursor.getString(cursor.getColumnIndex(DIET_BREAKFAST));
+                    String diet_lunch = cursor.getString(cursor.getColumnIndex(DIET_LUNCH));
+                    String diet_dinner = cursor.getString(cursor.getColumnIndex(DIET_DINNER));
+
+                    Diet diet = new Diet(id_diet,id_patient_diet,diet_day,diet_breakfast,diet_lunch,diet_dinner);
+                    all.add(diet);
+
+                }while (cursor.moveToNext());
+            }
+        }
+        db.close();
+        cursor.close();
+        return all;
+    }
+
+    // Delete diet chart.
+    public int deleteDietChartSingle(int id){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        int deleted = db.delete(DIET_TABLE, ID_DIET+"=?", new String[]{""+id});
+        db.close();
+        return deleted;
+    }
+
+    // Deleting full diet chart against a patient profile
+    public int deleteDietChartAll(int id){
+
+        int deleted = -1;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+DIET_TABLE+" where "+ID_PATIENT_DIET+"='" + id + "'",null);
+        if (cursor != null){
+
+            if (cursor.getCount() >0 ){
+
+                do {
+                    deleted = db.delete(DIET_TABLE, ID_PATIENT_DIET+"=?", new String[]{""+id});
+                }while (cursor.moveToNext());
+            }
+        }
+
+        db.close();
+        cursor.close();
+        return deleted;
     }
 
 }

@@ -55,7 +55,7 @@ public class CreateProfile extends ActionBarActivity {
         setContentView(R.layout.create_profile);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#18376a")));
 
 
         // setInitialize();

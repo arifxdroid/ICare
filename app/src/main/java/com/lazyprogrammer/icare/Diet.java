@@ -11,33 +11,29 @@ public class Diet {
     private String breakfast;
     private String lunch;
     private String dinner;
-    private String foodList;
 
-    public Diet(int id_diet, int id_patient, String day, String breakfast, String lunch, String dinner, String foodList) {
+    public Diet(int id_diet, int id_patient, String day, String breakfast, String lunch, String dinner) {
         this.id_diet = id_diet;
         this.id_patient = id_patient;
         this.day = day;
         this.breakfast = breakfast;
         this.lunch = lunch;
         this.dinner = dinner;
-        this.foodList = foodList;
     }
 
-    public Diet(int id_patient, String day, String breakfast, String lunch, String dinner, String foodList) {
+    public Diet(int id_patient, String day, String breakfast, String lunch, String dinner) {
         this.id_patient = id_patient;
         this.day = day;
         this.breakfast = breakfast;
         this.lunch = lunch;
         this.dinner = dinner;
-        this.foodList = foodList;
     }
 
-    public Diet(String day, String breakfast, String lunch, String dinner, String foodList) {
+    public Diet(String day, String breakfast, String lunch, String dinner) {
         this.day = day;
         this.breakfast = breakfast;
         this.lunch = lunch;
         this.dinner = dinner;
-        this.foodList = foodList;
     }
 
     public Diet(){
@@ -90,13 +86,5 @@ public class Diet {
 
     public void setDinner(String dinner) {
         this.dinner = dinner;
-    }
-
-    public String getFoodList() {
-        return foodList;
-    }
-
-    public void setFoodList(String foodList) {
-        this.foodList = foodList;
     }
 }

@@ -32,7 +32,7 @@ public class AllService extends ActionBarActivity {
 
         intent = getIntent();
 
-        if (intent.getIntExtra("patient_id",-1) == -1 ){
+        if (intent.getIntExtra("patient_id",-1) != -1 ){
 
             patient_id = intent.getIntExtra("patient_id",0);
             SharedPreferences sharedPreferences=getSharedPreferences("allService",MODE_PRIVATE);
