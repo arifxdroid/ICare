@@ -7,4 +7,6 @@
     <string name="title_activity_all_service">All Service</string>
     <string name="title_activity_my_diet_chart">My Diet Chart</string>
     <string name="title_activity_add_diet_chart">Add Diet Chart</string>
+    <string name="title_activity_profile_view">Profile View</string>
+    <string name="title_activity_update_profile">Update Profile</string>
 </resources>
