@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class UpdateProfile extends ActionBarActivity {
     EditText etPatientName, etAge,etHeight,etWeight,etPhone,etEmail,etPatientCondition;
     ImageView imageView;
-    TextView tvCurrentDate;
+    TextView tvCurrentDate,tvBloodGroup,tvGender;
     Button btnSave;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,8 @@ public class UpdateProfile extends ActionBarActivity {
         setContentView(R.layout.update_profile);
         etPatientName = (EditText)findViewById(R.id.etPatientName);
         tvCurrentDate= (TextView) findViewById(R.id.tvCurrentDate);
+        tvBloodGroup= (TextView) findViewById(R.id.tvBloodGroup);
+        tvGender= (TextView) findViewById(R.id.tvGender);
         etAge= (EditText) findViewById(R.id.etAge);
         etHeight= (EditText) findViewById(R.id.etHeight);
         etWeight= (EditText) findViewById(R.id.etWeight);

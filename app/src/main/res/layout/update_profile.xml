@@ -52,29 +52,15 @@
                     android:text="Gender:"
                     android:textColor="#FFFFFF"/>
 
-                <RadioGroup
+                <TextView
+                    android:id="@+id/tvGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rgGender"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="8dp"
-                    >
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Male"
-                        android:editable="false"
-                        android:onClick="onRadioButtonClick"
-                        android:id="@+id/rbMale"
-                        android:checked="false" />
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Female"
-                        android:editable="false"
-                        android:onClick="onRadioButtonClick"
-                        android:id="@+id/rbFemale"/>
-                </RadioGroup>
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="4dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Male/Female"
+                    android:textColor="#FFFFFF"/>
 
 
             </LinearLayout>
