@@ -34,6 +34,7 @@
             android:label="@string/title_activity_add_diet_chart" >
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".ServiceOthers"
             android:label="@string/title_activity_service_others" >
         </activity>
@@ -52,6 +53,14 @@
         <activity
             android:name=".NoteUpdate"
             android:label="@string/title_activity_note_update" >
+=======
+            android:name=".ProfileView"
+            android:label="@string/title_activity_profile_view" >
+        </activity>
+        <activity
+            android:name=".UpdateProfile"
+            android:label="@string/title_activity_update_profile" >
+>>>>>>> e0ebef5ad5e258a098e2f34371c7f1685ed9df2a
         </activity>
     </application>
 

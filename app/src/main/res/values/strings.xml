@@ -6,6 +6,7 @@
     <string name="title_activity_all_service">All Service</string>
     <string name="title_activity_my_diet_chart">My Diet Chart</string>
     <string name="title_activity_add_diet_chart">Add Diet Chart</string>
+<<<<<<< HEAD
     <string name="drawer_open">Your health assistant</string>
     <string name="drawer_close">iCare</string>
     <string name="title_activity_service_others">All Service</string>
@@ -15,4 +16,8 @@
     <string name="title_activity_note_list">Notes</string>
     <string name="title_activity_note_view">My Note</string>
     <string name="title_activity_note_update">Update Note</string>
+=======
+    <string name="title_activity_profile_view">Profile View</string>
+    <string name="title_activity_update_profile">Update Profile</string>
+>>>>>>> e0ebef5ad5e258a098e2f34371c7f1685ed9df2a
 </resources>
