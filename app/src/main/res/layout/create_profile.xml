@@ -92,13 +92,15 @@
                   android:text="Male"
                   android:onClick="onRadioButtonClick"
                   android:id="@+id/rbMale"
-                  android:checked="false" />
+                  android:checked="false"
+                  android:textColor="#FFFFFF"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
                     android:onClick="onRadioButtonClick"
-                    android:id="@+id/rbFemale"/>
+                    android:id="@+id/rbFemale"
+                    android:textColor="#FFFFFF"/>
                 </RadioGroup>
 
 
@@ -152,12 +154,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Age: "
-                android:inputType="number"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#FFFFFF"
                 />
@@ -167,8 +168,8 @@
                 android:id="@+id/etAge"
                 android:inputType="numberDecimal"
                 android:background="#13536a"
-                android:layout_marginLeft="27dp"
-                android:hint="0.0"/>
+                android:layout_marginLeft="31dp"
+                android:hint="0"/>
 
         </LinearLayout>
 
@@ -176,7 +177,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -188,7 +189,7 @@
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:inputType="numberDecimal"
-                android:layout_marginLeft="7dp"
+                android:layout_marginLeft="8dp"
                 android:background="#13536a"
                 android:hint="0.0"/>
 
@@ -207,7 +208,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -240,7 +241,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -263,7 +264,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -288,7 +289,7 @@
                 android:layout_width="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:text="Current Disease and Condition: "
                 android:textColor="#FFFFFF"
                 />

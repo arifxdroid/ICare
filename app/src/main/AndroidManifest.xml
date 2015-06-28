@@ -33,6 +33,26 @@
             android:name=".AddDietChart"
             android:label="@string/title_activity_add_diet_chart" >
         </activity>
+        <activity
+            android:name=".ServiceOthers"
+            android:label="@string/title_activity_service_others" >
+        </activity>
+        <activity
+            android:name=".NoteEditor"
+            android:label="@string/title_activity_note_editor" >
+        </activity>
+        <activity
+            android:name=".NoteList"
+            android:label="@string/title_activity_note_list" >
+        </activity>
+        <activity
+            android:name=".NoteView"
+            android:label="@string/title_activity_note_view" >
+        </activity>
+        <activity
+            android:name=".NoteUpdate"
+            android:label="@string/title_activity_note_update" >
+        </activity>
     </application>
 
 </manifest>

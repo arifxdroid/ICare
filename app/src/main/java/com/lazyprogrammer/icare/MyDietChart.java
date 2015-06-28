@@ -3,6 +3,8 @@ package com.lazyprogrammer.icare;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -11,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,7 +21,8 @@ import java.util.ArrayList;
 
 public class MyDietChart extends ActionBarActivity {
 
-    private ListView lvDiet;
+    ListView lvDiet;
+    TextView txtVisibility;
     static int patient_id;
     Intent intent;
     private ArrayList<Diet> allChart;
@@ -30,31 +34,42 @@ public class MyDietChart extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_diet_chart);
 
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
+
         databaseHelper = new DatabaseHelper(this);
 
         intent = getIntent();
 
-        if (intent.getIntExtra("patient_id",-1) != -1){
+        if (intent.getIntExtra("patient_id", -1) != -1){
 
             patient_id = intent.getIntExtra("patient_id", 0);
-            SharedPreferences sharedPreferences=getSharedPreferences("allService", Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences=getSharedPreferences("myDietChart", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("patient_id",patient_id);
+            editor.putInt("patient_id", patient_id);
             editor.commit();
 
         }
 
         else {
 
-            SharedPreferences preferences = getSharedPreferences("allService",MODE_PRIVATE);
+            SharedPreferences preferences = getSharedPreferences("myDietChart",MODE_PRIVATE);
             preferences.getInt("patient_id",patient_id);
 
         }
 
         allChart = databaseHelper.getDietChart(patient_id);
         lvDiet = (ListView)findViewById(R.id.lvDiet);
-        dietAdapter = new DietAdapter(this,allChart);
-        lvDiet.setAdapter(dietAdapter);
+        txtVisibility = (TextView)findViewById(R.id.txtVisibility);
+
+        if (allChart.size() == 0){
+
+            txtVisibility.setVisibility(View.VISIBLE);
+            lvDiet.setVisibility(View.GONE);
+        }else {
+            dietAdapter = new DietAdapter(this,allChart);
+            lvDiet.setAdapter(dietAdapter);
+        }
         registerForContextMenu(lvDiet);
     }
 
@@ -82,14 +97,16 @@ public class MyDietChart extends ActionBarActivity {
                 if (deleted >0 ){
 
                     Toast.makeText(getApplicationContext(), "Delete success!", Toast.LENGTH_SHORT).show();
+                    dietAdapter.remove(d);
+                    dietAdapter.notifyDataSetChanged();
 
                 }else {
 
                     Toast.makeText(getApplicationContext(), "Delete failed!", Toast.LENGTH_SHORT).show();
 
                 }
-                dietAdapter.notifyDataSetChanged();
-                lvDiet.setAdapter(dietAdapter);
+//                dietAdapter = new DietAdapter(this,allChart);
+//                lvDiet.setAdapter(dietAdapter);
                 break;
             case R.id.action_deleteall_diet:
                 break;
@@ -98,13 +115,7 @@ public class MyDietChart extends ActionBarActivity {
         return super.onContextItemSelected(item);
     }
 
-    @Override
-    protected void onPostResume() {
 
-        dietAdapter = new DietAdapter(this,allChart);
-        lvDiet.setAdapter(dietAdapter);
-        super.onPostResume();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

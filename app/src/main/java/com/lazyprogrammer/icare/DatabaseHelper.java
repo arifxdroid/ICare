@@ -104,7 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Updating a patient profile.
-    public int updatePatient(PatientTemplate p, int diet_id){
+    public int updatePatient(PatientTemplate p, int id){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values  = new ContentValues();
@@ -122,7 +122,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PATIENT_CONDITION, p.getPatientCondition());
         values.put(PATIENT_IMAGE, p.getPatient_image());
 
-        int updated = db.update(DIET_TABLE, values, ID_DIET+"=?", new String[]{""+diet_id});
+        int updated = db.update(TABLE_NAME, values, ID_FIELD+"=?", new String[]{""+id});
+        db.close();
         return updated;
     }
 

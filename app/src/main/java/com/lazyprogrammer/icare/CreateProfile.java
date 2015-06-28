@@ -47,6 +47,14 @@ public class CreateProfile extends ActionBarActivity {
     private  String bloodType;
     private String profileType;
     private String gender;
+    private int age;
+    private  double height;
+    private double weight;
+    private String name;
+    private String currentDate;
+    private String phone;
+    private String email;
+    private String patientCondition;
     private Uri imgUri;
 
     @Override
@@ -129,18 +137,32 @@ public class CreateProfile extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                String name = etPatientName.getText().toString();
-               // String bloodGroup = etBlood.getText().toString();
-                String currentDate = tvCurrentDate.getText().toString();
-                int age = Integer.parseInt(etAge.getText().toString());
-                double height = Double.parseDouble(etHeight.getText().toString());
-                double weight = Double.parseDouble(etWeight.getText().toString());
-                String phone = etPhone.getText().toString();
-                String email = etEmail.getText().toString();
-                String patientCondition = etPatientCondition.getText().toString();
+                name = etPatientName.getText().toString();
+                currentDate = tvCurrentDate.getText().toString();
+                if (etAge.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Please input Height!", Toast.LENGTH_LONG).show();
+                }else {
+                    age = Integer.parseInt(etAge.getText().toString());
+                }
 
-                if (!name.equals("") && !profileType.equals("") && !gender.equals("") && !bloodType.equals("") && !currentDate.equals("") && age!=0
-                        && height!=0 && weight!=0 && !patientCondition.equals("")){
+                if (etHeight.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Please input Height!", Toast.LENGTH_LONG).show();
+                }else {
+                    height = Double.parseDouble(etHeight.getText().toString());
+                }
+
+                if (etWeight.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Please input Weight!", Toast.LENGTH_LONG).show();
+                }else {
+                    weight = Double.parseDouble(etWeight.getText().toString());
+                }
+                phone = etPhone.getText().toString();
+                email = etEmail.getText().toString();
+                patientCondition = etPatientCondition.getText().toString();
+
+
+
+                if (!name.equals("") && !profileType.equals("") && !gender.equals("") && !bloodType.equals("") && !currentDate.equals("") && !patientCondition.equals("")){
 
                     PatientTemplate p = new PatientTemplate(name,profileType,gender,bloodType,currentDate,age,height,weight,phone,email,patientCondition,fianalImage);
                     long insert = databaseHelper.addPatient(p);
