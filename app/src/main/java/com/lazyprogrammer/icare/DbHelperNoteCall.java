@@ -205,4 +205,31 @@ public class DbHelperNoteCall extends SQLiteOpenHelper {
         cursor.close();
         return all;
     }
+
+    public EmergencyCall getEmergencyNumber(){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_CALL, null, null, null, null, null, null, null);
+        EmergencyCall call = null;
+        if (cursor != null){
+
+            if (cursor.getCount() > 0){
+
+                cursor.moveToFirst();
+                do {
+
+                    int id = cursor.getInt(cursor.getColumnIndex(ID_CALL));
+                    String name = cursor.getString(cursor.getColumnIndex(CALL_NAME));
+                    String number = cursor.getString(cursor.getColumnIndex(CALL_NUMBER));
+
+                    call = new EmergencyCall(id,name,number);
+
+                }while (cursor.moveToNext());
+            }
+        }
+
+        db.close();
+        cursor.close();
+        return call;
+    }
 }

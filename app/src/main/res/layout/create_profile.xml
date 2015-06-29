@@ -163,7 +163,7 @@
                 android:textColor="#FFFFFF"
                 />
             <EditText
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:id="@+id/etAge"
                 android:inputType="numberDecimal"
@@ -186,21 +186,12 @@
                 android:textColor="#FFFFFF"/>
             <EditText
                 android:id="@+id/etHeight"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:inputType="numberDecimal"
                 android:layout_marginLeft="8dp"
                 android:background="#13536a"
-                android:hint="0.0"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="inch.  "
-                android:layout_marginLeft="3dp"
-                android:textColor="#FFFFFF"
-                />
+                android:hint="0.0 feet"/>
 
             </LinearLayout>
 
@@ -218,21 +209,13 @@
                 android:textColor="#FFFFFF"/>
             <EditText
                 android:id="@+id/etWeight"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:inputType="numberDecimal"
                 android:layout_marginLeft="5dp"
                 android:background="#13536a"
                 android:hint="0.0"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Kg."
-                android:layout_marginLeft="3dp"
-                android:textColor="#FFFFFF"
-                />
 
         </LinearLayout>
 
@@ -255,7 +238,7 @@
                 android:layout_height="35dp"
                 android:inputType="phone"
                 android:layout_marginLeft="5dp"
-                android:hint="Enter Phone Number"
+                android:hint="Phone Number(optional)"
                 android:background="#13536a"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 />
@@ -279,7 +262,7 @@
                 android:layout_height="35dp"
                 android:background="#13536a"
                 android:inputType="textEmailAddress"
-                android:hint="exmaple@gmail.com"
+                android:hint="Email(optional)"
                 android:layout_marginLeft="13dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 />
@@ -300,7 +283,7 @@
                 android:layout_height="110dp"
                 android:layout_marginTop="8dp"
                 android:inputType="textMultiLine"
-                android:hint="Health condition.Or Disease name. "
+                android:hint="Health condition or disease name. "
                 android:textColor="@android:color/black"
                 android:background="#13536a"
                 android:gravity="top"

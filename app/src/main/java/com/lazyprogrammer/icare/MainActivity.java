@@ -191,6 +191,17 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_delete:
                 break;
             case R.id.action_edit:
+
+                PatientTemplate patient = allPatient.get(info.position);
+                int patient_id = patient.getId();
+
+                Intent intent = new Intent(MainActivity.this, UpdateProfile.class);
+                intent.putExtra("patient_id", patient_id);
+                startActivity(intent);
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
+
                 break;
         }
 

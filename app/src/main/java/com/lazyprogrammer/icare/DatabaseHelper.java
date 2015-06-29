@@ -122,7 +122,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PATIENT_CONDITION, p.getPatientCondition());
         values.put(PATIENT_IMAGE, p.getPatient_image());
 
-        int updated = db.update(TABLE_NAME, values, ID_FIELD+"=?", new String[]{""+id});
+        int updated = db.update(TABLE_NAME, values, ID_FIELD + "=?", new String[]{"" + id});
         db.close();
         return updated;
     }
@@ -165,6 +165,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         cursor.close();
         return all;
+    }
+
+    public PatientTemplate getAPatient(int id_patient){
+
+        PatientTemplate patient = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " where " + ID_FIELD + "='" + id_patient + "'", null);
+
+        if (cursor != null){
+
+            if (cursor.getCount()>0){
+
+                cursor.moveToFirst();
+                do {
+                    int id = cursor.getInt(cursor.getColumnIndex(ID_FIELD));
+                    String name = cursor.getString(cursor.getColumnIndex(PATIENT_NAME_FIELD));
+                    String profileType = cursor.getString(cursor.getColumnIndex(PATIENT_PROFILE_TYPE));
+                    String gender = cursor.getString(cursor.getColumnIndex(PATIENT_GENDER));
+                    String bloodGroup = cursor.getString(cursor.getColumnIndex(PATIENT_BLOOD_GROUP));
+                    String currentDate = cursor.getString(cursor.getColumnIndex(CURRENT_DATE));
+                    int age = cursor.getInt(cursor.getColumnIndex(PATIENT_AGE));
+                    double height = cursor.getDouble(cursor.getColumnIndex(PATIENT_HEIGHT));
+                    double weight = cursor.getDouble(cursor.getColumnIndex(PATIENT_WEIGHT));
+                    String phoneNumber = cursor.getString(cursor.getColumnIndex(PATIENT_PHONE_NUMBER));
+                    String email = cursor.getString(cursor.getColumnIndex(PATIENT_EMAIL));
+                    String patientCondition = cursor.getString(cursor.getColumnIndex(PATIENT_CONDITION));
+                    byte[] patientImage = cursor.getBlob(cursor.getColumnIndex(PATIENT_IMAGE));
+
+                    patient = new PatientTemplate(id,name,profileType,gender,bloodGroup,currentDate,age,height,weight,phoneNumber,email,patientCondition,patientImage);
+
+                }while (cursor.moveToNext());
+            }
+        }
+
+        db.close();
+        cursor.close();
+        return patient;
     }
 
 

@@ -17,51 +17,64 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".CreateProfile"
             android:label="@string/title_activity_create_profile" >
         </activity>
+
         <activity
             android:name=".AllService"
             android:label="@string/title_activity_all_service" >
         </activity>
+
         <activity
             android:name=".MyDietChart"
             android:label="@string/title_activity_my_diet_chart" >
         </activity>
+
         <activity
             android:name=".AddDietChart"
             android:label="@string/title_activity_add_diet_chart" >
         </activity>
+
         <activity
-<<<<<<< HEAD
             android:name=".ServiceOthers"
             android:label="@string/title_activity_service_others" >
         </activity>
+
         <activity
             android:name=".NoteEditor"
             android:label="@string/title_activity_note_editor" >
         </activity>
+
         <activity
             android:name=".NoteList"
             android:label="@string/title_activity_note_list" >
         </activity>
+
         <activity
             android:name=".NoteView"
             android:label="@string/title_activity_note_view" >
         </activity>
+
         <activity
             android:name=".NoteUpdate"
             android:label="@string/title_activity_note_update" >
-=======
-            android:name=".ProfileView"
-            android:label="@string/title_activity_profile_view" >
         </activity>
+
+        <activity
+            android:name=".ProfileView"
+            android:label="Profile">
+
+        </activity>
+
         <activity
             android:name=".UpdateProfile"
-            android:label="@string/title_activity_update_profile" >
->>>>>>> e0ebef5ad5e258a098e2f34371c7f1685ed9df2a
+            android:label="Update profile" >
+
         </activity>
+
     </application>
 
 </manifest>

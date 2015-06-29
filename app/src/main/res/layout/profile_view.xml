@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/scrollView"
-    android:background="#18376a"
     android:layout_gravity="center_vertical">
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
@@ -26,7 +25,7 @@
                 <ImageView
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:id="@+id/imageView"
+                    android:id="@+id/imgPatientView"
                     android:layout_marginLeft="110dp"
                     android:src="@drawable/pa" />
 
@@ -41,7 +40,7 @@
                 android:layout_marginTop="3dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Name"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#000"/>
 
 
             <LinearLayout
@@ -56,7 +55,7 @@
                     android:layout_marginTop="3dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Gender:"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
 
                 <TextView
                     android:id="@+id/tvGender"
@@ -66,7 +65,7 @@
                     android:layout_marginLeft="4dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Male/Female"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
 
 
             </LinearLayout>
@@ -81,7 +80,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_height="wrap_content"
                     android:text="Blood Group: "
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000"
                     />
                 <TextView
                     android:id="@+id/tvBloodGroup"
@@ -90,7 +89,7 @@
                     android:layout_marginTop="3dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="A+"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
 
             </LinearLayout>
 
@@ -102,9 +101,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Current Date: "
+                    android:text="Create Date: "
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000"
                     />
                 <TextView
                     android:id="@+id/tvCurrentDate"
@@ -112,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:hint="DD-MM-YY"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000"
                     />
             </LinearLayout>
 
@@ -127,7 +126,7 @@
                     android:text="Age: "
                     android:inputType="number"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000"
                     />
                 <TextView
                     android:id="@+id/tvAge"
@@ -136,7 +135,7 @@
                     android:layout_marginTop="3dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="10"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
 
             </LinearLayout>
 
@@ -150,23 +149,23 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Height: "
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
                 <TextView
                     android:id="@+id/tvHeight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="0.0"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="inch.  "
+                    android:text="feet.  "
                     android:layout_marginLeft="3dp"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000"
                     />
 
             </LinearLayout>
@@ -182,15 +181,15 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_height="wrap_content"
                     android:text="Weight: "
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
                 <TextView
                     android:id="@+id/tvWeight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="0.0"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -198,7 +197,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Kg."
                     android:layout_marginLeft="3dp"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000"
                     />
 
             </LinearLayout>
@@ -214,7 +213,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_height="wrap_content"
                     android:text="Phone: "
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
                 />
                 <TextView
                     android:id="@+id/tvPhone"
@@ -222,9 +221,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="01673648918"
+                    android:text="017XXXXXXXX"
                     android:autoLink="phone"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -236,7 +235,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_height="wrap_content"
                     android:text="Email: "
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000"
                     />
 
                 <TextView
@@ -248,7 +247,7 @@
                     android:text="example@gmail.com"
                     android:layout_marginLeft="4dp"
                     android:autoLink="email"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
             </LinearLayout>
 
             <TextView
@@ -257,7 +256,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Current Disease and Condition: "
-                android:textColor="#FFFFFF"
+                android:textColor="#000"
                 />
 
             <TextView
@@ -267,14 +266,17 @@
                 android:layout_marginTop="3dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="well"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#000"/>
             <Button
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:id="@+id/btnOk"
                 android:text="OK"
+                android:shadowColor="#ff2e72f5"
                 android:layout_gravity="center"/>
+
+
         </LinearLayout>
 
     </LinearLayout>

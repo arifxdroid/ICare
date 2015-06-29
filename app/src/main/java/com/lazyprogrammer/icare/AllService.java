@@ -58,6 +58,18 @@ public class AllService extends ActionBarActivity {
             }
         });
 
+        ibProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(AllService.this, ProfileView.class);
+                i.putExtra("patient_id", patient_id);
+                startActivity(i);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
+            }
+        });
+
     }
 
     private void initialize() {

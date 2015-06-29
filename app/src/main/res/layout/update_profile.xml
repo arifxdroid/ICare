@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/scrollView"
-    android:background="#18376a"
+    android:background="#FFF"
     android:layout_gravity="center_vertical">
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
@@ -32,61 +32,10 @@
                 android:id="@+id/etPatientName"
                 android:hint="Enter Name"
                 android:layout_marginTop="15dp"
-                android:background="#13536a"
+                android:background="#ffe4e4e4"
                 />
 
 
-
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Gender:"
-                    android:textColor="#FFFFFF"/>
-
-                <TextView
-                    android:id="@+id/tvGender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginLeft="4dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Male/Female"
-                    android:textColor="#FFFFFF"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_height="wrap_content"
-                    android:text="Blood Group: "
-                    android:textColor="#FFFFFF"
-                    />
-                <TextView
-                    android:id="@+id/tvBloodGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="A+"
-                    android:textColor="#FFFFFF"/>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -98,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:text="Current Date: "
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#2196F3"
                     />
                 <TextView
                     android:id="@+id/tvCurrentDate"
@@ -106,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:hint="DD-MM-YY"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#2196F3"
                     />
             </LinearLayout>
 
@@ -121,14 +70,14 @@
                     android:text="Age: "
                     android:inputType="number"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#2196F3"
                     />
                 <EditText
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:id="@+id/etAge"
                     android:inputType="numberDecimal"
-                    android:background="#13536a"
+                    android:background="#ffe4e4e4"
                     android:layout_marginLeft="27dp"
                     android:hint="0.0"/>
 
@@ -144,24 +93,16 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Height: "
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#2196F3"/>
                 <EditText
                     android:id="@+id/etHeight"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:inputType="numberDecimal"
                     android:layout_marginLeft="7dp"
-                    android:background="#13536a"
-                    android:hint="0.0"/>
+                    android:background="#ffe4e4e4"
+                    android:hint="0.0 ft"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="inch.  "
-                    android:layout_marginLeft="3dp"
-                    android:textColor="#FFFFFF"
-                    />
 
             </LinearLayout>
 
@@ -176,24 +117,16 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_height="wrap_content"
                     android:text="Weight: "
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#2196F3"/>
                 <EditText
                     android:id="@+id/etWeight"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:inputType="numberDecimal"
                     android:layout_marginLeft="5dp"
-                    android:background="#13536a"
-                    android:hint="0.0"/>
+                    android:background="#ffe4e4e4"
+                    android:hint="0.0 kg"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Kg."
-                    android:layout_marginLeft="3dp"
-                    android:textColor="#FFFFFF"
-                    />
 
             </LinearLayout>
 
@@ -208,7 +141,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_height="wrap_content"
                     android:text="Phone: "
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#2196F3"/>
                 />
                 <EditText
                     android:id="@+id/etPhone"
@@ -217,7 +150,7 @@
                     android:inputType="phone"
                     android:layout_marginLeft="5dp"
                     android:hint="Enter Phone Number"
-                    android:background="#13536a"
+                    android:background="#ffe4e4e4"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     />
             </LinearLayout>
@@ -231,14 +164,14 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_height="wrap_content"
                     android:text="Email: "
-                    android:textColor="#FFFFFF"
+                    android:textColor="#2196F3"
                     />
 
                 <EditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:background="#13536a"
+                    android:background="#ffe4e4e4"
                     android:inputType="textEmailAddress"
                     android:hint="exmaple@gmail.com"
                     android:layout_marginLeft="13dp"
@@ -252,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Current Disease and Condition: "
-                android:textColor="#FFFFFF"
+                android:textColor="#2196F3"
                 />
 
             <EditText
@@ -263,7 +196,7 @@
                 android:inputType="textMultiLine"
                 android:hint="Health condition.Or Disease name. "
                 android:textColor="@android:color/black"
-                android:background="#13536a"
+                android:background="#ffe4e4e4"
                 android:gravity="top"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
             <Button
