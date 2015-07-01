@@ -209,7 +209,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int deletePatient(int id){
 
         SQLiteDatabase db = this.getWritableDatabase();
-        int deleted = db.delete(TABLE_NAME, ID_FIELD+"=?", new String[]{""+id});
+        int deleted = db.delete(TABLE_NAME, ID_FIELD + "=?", new String[]{"" + id});
 
         db.close();
         return deleted;
@@ -228,9 +228,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(DIET_LUNCH, diet.getLunch());
         values.put(DIET_DINNER, diet.getDinner());
 
-        long inserted = db.insert(DIET_TABLE,null,values);
+        long inserted = db.insert(DIET_TABLE, null, values);
         db.close();
         return inserted;
+    }
+
+    public int updateDiet(Diet diet, int id){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ID_PATIENT_DIET, diet.getId_patient());
+        values.put(DIET_DAY_FIELD, diet.getDay());
+        values.put(DIET_BREAKFAST, diet.getBreakfast());
+        values.put(DIET_LUNCH, diet.getLunch());
+        values.put(DIET_DINNER, diet.getDinner());
+
+        int updated = db.update(DIET_TABLE, values, ID_DIET + "=?", new String[]{"" + id});
+        db.close();
+        return updated;
     }
 
 
@@ -266,6 +282,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return all;
     }
+
+    public Diet getADietChart(int id){
+
+        Diet diet = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+DIET_TABLE+" where "+ID_DIET+"='" + id + "'",null);
+
+        if (cursor != null){
+
+            if (cursor.getCount() > 0){
+
+                cursor.moveToFirst();
+
+                do {
+
+                    int id_diet = cursor.getInt(cursor.getColumnIndex(ID_DIET));
+                    int id_patient_diet = cursor.getInt(cursor.getColumnIndex(ID_PATIENT_DIET));
+                    String diet_day = cursor.getString(cursor.getColumnIndex(DIET_DAY_FIELD));
+                    String diet_breakfast = cursor.getString(cursor.getColumnIndex(DIET_BREAKFAST));
+                    String diet_lunch = cursor.getString(cursor.getColumnIndex(DIET_LUNCH));
+                    String diet_dinner = cursor.getString(cursor.getColumnIndex(DIET_DINNER));
+
+                    diet = new Diet(id_diet,id_patient_diet,diet_day,diet_breakfast,diet_lunch,diet_dinner);
+
+                }while (cursor.moveToNext());
+            }
+        }
+        db.close();
+        cursor.close();
+        return diet;
+    }
+
 
     // Delete diet chart.
     public int deleteDietChartSingle(int id){

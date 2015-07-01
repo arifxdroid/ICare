@@ -128,6 +128,12 @@ public class MainActivity extends ActionBarActivity {
 
                         break;
                     case 2:
+
+                        Intent in = new Intent(MainActivity.this, EmergencyCallView.class);
+                        startActivity(in);
+                        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        finish();
+
                         break;
                 }
             }

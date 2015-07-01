@@ -1,5 +1,7 @@
 package com.lazyprogrammer.icare;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,6 +30,7 @@ public class MyDietChart extends ActionBarActivity {
     private ArrayList<Diet> allChart;
     private DatabaseHelper databaseHelper;
     private DietAdapter dietAdapter;
+    private AlarmManager alarmManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class MyDietChart extends ActionBarActivity {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
+
+        alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -70,6 +76,23 @@ public class MyDietChart extends ActionBarActivity {
             dietAdapter = new DietAdapter(this,allChart);
             lvDiet.setAdapter(dietAdapter);
         }
+
+        lvDiet.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                Diet diet = allChart.get(position);
+                int id_diet = diet.getId_diet();
+
+                Intent intent = new Intent(MyDietChart.this, DietView.class);
+                intent.putExtra("id_diet", id_diet);
+                startActivity(intent);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                finish();
+
+            }
+        });
+
         registerForContextMenu(lvDiet);
     }
 
@@ -88,11 +111,11 @@ public class MyDietChart extends ActionBarActivity {
 
         switch (item.getItemId()){
 
-            case R.id.action_edit_diet:
-                break;
             case R.id.action_delete_diet:
 
                 int deleted = databaseHelper.deleteDietChartSingle(d.getId_diet());
+                alarmManager.cancel(PendingIntent.getBroadcast(MyDietChart.this, d.getId_diet(), new Intent(MyDietChart.this, AlarmReceiverDiet.class), PendingIntent.FLAG_CANCEL_CURRENT));
+
 
                 if (deleted >0 ){
 
@@ -105,11 +128,8 @@ public class MyDietChart extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), "Delete failed!", Toast.LENGTH_SHORT).show();
 
                 }
-//                dietAdapter = new DietAdapter(this,allChart);
-//                lvDiet.setAdapter(dietAdapter);
                 break;
-            case R.id.action_deleteall_diet:
-                break;
+           
         }
 
         return super.onContextItemSelected(item);

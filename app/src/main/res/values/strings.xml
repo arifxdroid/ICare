@@ -19,5 +19,10 @@
 
     <string name="title_activity_profile_view">Profile View</string>
     <string name="title_activity_update_profile">Update Profile</string>
+    <string name="title_activity_diet_view">"View diet "</string>
+    <string name="title_activity_diet_edit">Edit diet chart</string>
+    <string name="title_activity_emergency_call_view">Emergency Call</string>
+    <string name="title_activity_emergency_number_add">Add Number</string>
+    <string name="title_activity_emergency_number_edit">Edit number</string>
 
 </resources>

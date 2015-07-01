@@ -1,5 +1,8 @@
 package com.lazyprogrammer.icare;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,7 +16,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.GregorianCalendar;
 
 
 public class AddDietChart extends ActionBarActivity {
@@ -48,6 +54,7 @@ public class AddDietChart extends ActionBarActivity {
         etLunch = (EditText)findViewById(R.id.etLunch);
         etDinner = (EditText)findViewById(R.id.etDinner);
         btnSave = (Button)findViewById(R.id.btnSave);
+
 
         adapterDayList = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_spinner, R.id.txtSpinner, dayList);
         spnDay.setAdapter(adapterDayList);
