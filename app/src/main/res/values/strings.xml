@@ -24,5 +24,8 @@
     <string name="title_activity_emergency_call_view">Emergency Call</string>
     <string name="title_activity_emergency_number_add">Add Number</string>
     <string name="title_activity_emergency_number_edit">Edit number</string>
+    <string name="title_activity_doctor_add">Add doctor</string>
+    <string name="title_activity_doctor_list">Doctor\'s</string>
+    <string name="title_activity_doctor_view">Doctor profile</string>
 
 </resources>

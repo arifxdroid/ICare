@@ -129,7 +129,7 @@ public class MyDietChart extends ActionBarActivity {
 
                 }
                 break;
-           
+
         }
 
         return super.onContextItemSelected(item);

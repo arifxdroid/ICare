@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lazyprogrammer.icare" >
 
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -85,6 +85,18 @@
         <activity
             android:name=".EmergencyNumberEdit"
             android:label="@string/title_activity_emergency_number_edit" >
+        </activity>
+        <activity
+            android:name=".DoctorAdd"
+            android:label="@string/title_activity_doctor_add" >
+        </activity>
+        <activity
+            android:name=".DoctorList"
+            android:label="@string/title_activity_doctor_list" >
+        </activity>
+        <activity
+            android:name=".DoctorView"
+            android:label="@string/title_activity_doctor_view" >
         </activity>
     </application>
 

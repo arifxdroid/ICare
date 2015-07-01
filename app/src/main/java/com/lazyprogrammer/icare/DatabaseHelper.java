@@ -45,6 +45,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //public static final String DIET_TABLE_SQL = "CREATE TABLE "+DIET_TABLE+" ("+ID_DIET+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "+ID_PATIENT_DIET+" INTEGER REFERENCES "+TABLE_NAME+" ("+ID_FIELD+"), "+DIET_DAY_FIELD+" TEXT, "+DIET_BREAKFAST+" TEXT, "+DIET_LUNCH+" TEXT, "+DIET_DINNER+" TEXT)";
     public static final String DIET_TABLE_SQL = "CREATE TABLE "+DIET_TABLE+" ("+ID_DIET+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "+ID_PATIENT_DIET+" INTEGER, "+DIET_DAY_FIELD+" TEXT, "+DIET_BREAKFAST+" TEXT, "+DIET_LUNCH+" TEXT, "+DIET_DINNER+" TEXT)";
 
+
+    public static final String DOCTOR_TABLE  = "doctor_table";
+    public static final String ID_DOCTOR = "_ID_doctor";
+    public static final String ID_PATIENT_DOCTOR = "_ID_patient_doctor";
+    public static final String DOCTOR_NAME = "doctor_name";
+    public static final String DOCTOR_NUMBER = "doctor_number";
+    public static final String DOCTOR_EMAIL = "doctor_email";
+    public static final String DOCTOR_ADDRESS = "doctor_address";
+    public static final String DOCTOR_ABOUT = "doctor_about";
+
+    public static final String DOCTOR_TABLE_SQL = "CREATE TABLE "+DOCTOR_TABLE+" ("+ID_DOCTOR+" INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, "+ID_PATIENT_DOCTOR+" INTEGER, "+DOCTOR_NAME+" TEXT, "+DOCTOR_NUMBER+" TEXT, "+DOCTOR_EMAIL+" TEXT, "+DOCTOR_ADDRESS+" TEXT, "+DOCTOR_ABOUT+" TEXT)";
+
     public DatabaseHelper(Context context){
         super(context,DATABASE_NAME,null,VERSION);
     }
@@ -54,6 +66,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(PATIENT_TABLE_SQL);
         sqLiteDatabase.execSQL(DIET_TABLE_SQL);
+        sqLiteDatabase.execSQL(DOCTOR_TABLE_SQL);
 
     }
 
@@ -319,7 +332,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int deleteDietChartSingle(int id){
 
         SQLiteDatabase db = this.getWritableDatabase();
-        int deleted = db.delete(DIET_TABLE, ID_DIET+"=?", new String[]{""+id});
+        int deleted = db.delete(DIET_TABLE, ID_DIET + "=?", new String[]{"" + id});
         db.close();
         return deleted;
     }
@@ -342,6 +355,117 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.close();
         cursor.close();
+        return deleted;
+    }
+
+    public long addDoctor(Doctor doctor){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values  = new ContentValues();
+
+        values.put(ID_PATIENT_DOCTOR, doctor.getId_patientDoctor());
+        values.put(DOCTOR_NAME, doctor.getDoctorName());
+        values.put(DOCTOR_NUMBER, doctor.getDoctorNumber());
+        values.put(DOCTOR_EMAIL,doctor.getDoctorEmail());
+        values.put(DOCTOR_ADDRESS, doctor.getDoctorAddress());
+        values.put(DOCTOR_ABOUT, doctor.getAboutDoctor());
+
+        long inserted = db.insert(DOCTOR_TABLE, null, values);
+        db.close();
+        return inserted;
+    }
+
+    public int updateDoctor(Doctor doctor, int id){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values  = new ContentValues();
+
+        values.put(ID_PATIENT_DOCTOR, doctor.getId_patientDoctor());
+        values.put(DOCTOR_NAME, doctor.getDoctorName());
+        values.put(DOCTOR_NUMBER, doctor.getDoctorNumber());
+        values.put(DOCTOR_EMAIL,doctor.getDoctorEmail());
+        values.put(DOCTOR_ADDRESS, doctor.getDoctorAddress());
+        values.put(DOCTOR_ABOUT, doctor.getAboutDoctor());
+
+        int updated = db.update(DOCTOR_TABLE, values, ID_DOCTOR + "=?", new String[]{"" + id});
+        db.close();
+        return updated;
+    }
+
+    public ArrayList<Doctor> getAllDoctor(int id){
+
+        ArrayList<Doctor> all = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + DOCTOR_TABLE + " where " + ID_PATIENT_DOCTOR + "='" + id + "'", null);
+
+        if (cursor != null){
+
+            if (cursor.getCount() > 0){
+
+                cursor.moveToFirst();
+                do {
+
+                    int id_doctor = cursor.getInt(cursor.getColumnIndex(ID_DOCTOR));
+                    int id_patientDoctor = cursor.getInt(cursor.getColumnIndex(ID_PATIENT_DOCTOR));
+                    String name = cursor.getString(cursor.getColumnIndex(DOCTOR_NAME));
+                    String number = cursor.getString(cursor.getColumnIndex(DOCTOR_NUMBER));
+                    String email = cursor.getString(cursor.getColumnIndex(DOCTOR_EMAIL));
+                    String address = cursor.getString(cursor.getColumnIndex(DOCTOR_ADDRESS));
+                    String about = cursor.getString(cursor.getColumnIndex(DOCTOR_ABOUT));
+
+
+                    Doctor doctor = new Doctor(id_doctor,id_patientDoctor,name,number,email,address,about);
+                    all.add(doctor);
+
+                }while (cursor.moveToNext());
+            }
+        }
+
+        db.close();
+        cursor.close();
+        return all;
+
+    }
+
+    public Doctor getADoctor(int id){
+
+        Doctor doctor = null;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from " + DOCTOR_TABLE + " where " + ID_DOCTOR + "='" + id + "'", null);
+
+        if (cursor != null){
+
+            if (cursor.getCount() > 0){
+
+                cursor.moveToFirst();
+                do {
+
+                    int id_doctor = cursor.getInt(cursor.getColumnIndex(ID_DOCTOR));
+                    int id_patientDoctor = cursor.getInt(cursor.getColumnIndex(ID_PATIENT_DOCTOR));
+                    String name = cursor.getString(cursor.getColumnIndex(DOCTOR_NAME));
+                    String number = cursor.getString(cursor.getColumnIndex(DOCTOR_NUMBER));
+                    String email = cursor.getString(cursor.getColumnIndex(DOCTOR_EMAIL));
+                    String address = cursor.getString(cursor.getColumnIndex(DOCTOR_ADDRESS));
+                    String about = cursor.getString(cursor.getColumnIndex(DOCTOR_ABOUT));
+
+
+                    doctor = new Doctor(id_doctor,id_patientDoctor,name,number,email,address,about);
+
+                }while (cursor.moveToNext());
+            }
+        }
+
+        db.close();
+        cursor.close();
+        return doctor;
+
+    }
+
+    public int deleteDoctor(int id){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        int deleted = db.delete(DOCTOR_TABLE, ID_DOCTOR + "=?", new String[]{"" + id});
+        db.close();
         return deleted;
     }
 

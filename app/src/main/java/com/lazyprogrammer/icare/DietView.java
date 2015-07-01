@@ -95,7 +95,7 @@ public class DietView extends ActionBarActivity {
                         PendingIntent.getBroadcast(DietView.this, id_diet, alertIntent,
                                 PendingIntent.FLAG_UPDATE_CURRENT));
 
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 24 * 60 * 60 * 1000 * 7, PendingIntent.getBroadcast(DietView.this, 1, alertIntent, PendingIntent.FLAG_CANCEL_CURRENT));
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 24 * 60 * 60 * 1000 * 7, PendingIntent.getBroadcast(DietView.this, id_diet, alertIntent, PendingIntent.FLAG_CANCEL_CURRENT));
 
                 Toast.makeText(getApplicationContext(), "Alarm is active", Toast.LENGTH_SHORT).show();
             }
