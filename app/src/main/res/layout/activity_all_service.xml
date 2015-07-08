@@ -1,7 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#18376a"
     >
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
@@ -25,7 +24,7 @@
                 android:text="Profile"
                 android:id="@+id/textView"
                 android:textStyle="bold"
-                android:textColor="@android:color/background_light"
+                android:textColor="#2196F3"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="3"
                 />
@@ -53,7 +52,7 @@
                 android:text="Vaccination"
                 android:id="@+id/textView2"
                 android:textStyle="bold"
-                android:textColor="@android:color/background_light"
+                android:textColor="#2196F3"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="3"/>
 
@@ -80,7 +79,7 @@
                 android:text="My Doctors"
                 android:id="@+id/textView4"
                 android:textStyle="bold"
-                android:textColor="@android:color/background_light"
+                android:textColor="#2196F3"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="3"/>
 
@@ -109,7 +108,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medicine \nRoutine"
                 android:id="@+id/textView5"
-                android:textColor="@android:color/background_light"
+                android:textColor="#2196F3"
                 android:layout_gravity="center_vertical"
                 android:textStyle="bold"/>
 
@@ -136,7 +135,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Prescriptions"
                 android:id="@+id/textView6"
-                android:textColor="@android:color/background_light"
+                android:textColor="#2196F3"
                 android:layout_gravity="center_vertical"
                 android:textStyle="bold"
                 android:layout_weight="3"/>
@@ -164,7 +163,7 @@
                 android:id="@+id/textView3"
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical"
-                android:textColor="@android:color/background_light"
+                android:textColor="#2196F3"
                 android:layout_weight="3"
                 />
 

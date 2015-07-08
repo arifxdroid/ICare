@@ -1,7 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#18376a">
+    >
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="Select Day: "
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="#FFFFFF" />
+                android:textColor="#2196F3" />
 
             <Spinner
                 android:id="@+id/spnDay"
@@ -40,14 +40,14 @@
             android:layout_height="wrap_content"
             android:text="Breakfast:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#2196F3"/>
 
         <EditText
             android:id="@+id/etBreakfast"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
-            android:background="#13536a"
+            android:background="#ffe4e4e4"
             android:gravity="top"
             android:hint="Your breakfast items ." />
 
@@ -57,14 +57,14 @@
             android:layout_marginTop="10dp"
             android:text="Lunch:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#2196F3"/>
 
         <EditText
             android:id="@+id/etLunch"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
-            android:background="#13536a"
+            android:background="#ffe4e4e4"
             android:gravity="top"
             android:hint="Your Lunch items ." />
 
@@ -74,21 +74,22 @@
             android:layout_marginTop="10dp"
             android:text="Dinner:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#2196F3"/>
 
         <EditText
             android:id="@+id/etDinner"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="10dp"
-            android:background="#13536a"
+            android:background="#ffe4e4e4"
             android:gravity="top"
             android:hint="Your dinner items ." />
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:background="#2196F3"
             android:layout_marginTop="20dp"
             android:text="Save" />
 

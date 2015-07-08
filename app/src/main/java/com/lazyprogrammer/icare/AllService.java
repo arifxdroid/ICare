@@ -23,7 +23,7 @@ public class AllService extends ActionBarActivity {
         setContentView(R.layout.activity_all_service);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#18376a")));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
 
         initialize();
 

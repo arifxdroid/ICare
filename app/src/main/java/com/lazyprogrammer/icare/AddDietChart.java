@@ -42,7 +42,7 @@ public class AddDietChart extends ActionBarActivity {
         setContentView(R.layout.activity_add_diet_chart);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#18376a")));
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#2196F3")));
 
         intent = getIntent();
         patient_id = intent.getIntExtra("patient_id", 0);
